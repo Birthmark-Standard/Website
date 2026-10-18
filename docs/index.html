@@ -21,26 +21,9 @@
                     <h1><span class="the-prefix">The</span><span class="org-name">Birthmark Standard Foundation</span></h1>
                 </div>
                 <nav>
-                    <a href="/verify.html" style="background: var(--accent-blue); padding: 0.5rem 1rem; border-radius: 4px;">Verify Image</a>
                     <a href="/">Home</a>
-                    <a href="/blog/">Blog</a>
-                    <div class="dropdown">
-                        <a href="#" class="dropdown-toggle">How It Works ▾</a>
-                        <div class="dropdown-menu">
-                            <a href="/technical-architecture.html">Technical Architecture</a>
-                            <a href="/privacy-design.html">Privacy Design</a>
-                            <a href="/governance.html">Governance Plan</a>
-                            <a href="/investigation-framework.html">Investigation Framework</a>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <a href="#" class="dropdown-toggle">The People ▾</a>
-                        <div class="dropdown-menu">
-                            <a href="/contact.html">Contact</a>
-                            <a href="https://www.linkedin.com/company/birthmarkstandard/" class="external-link">LinkedIn ↗</a>
-                            <a href="https://github.com/Birthmark-Standard/Birthmark" class="external-link">GitHub ↗</a>
-                        </div>
-                    </div>
+                    <a href="/how-it-works.html">How It Works</a>
+                    <a href="/foundation.html">The Foundation</a>
                 </nav>
             </div>
         </div>
@@ -54,86 +37,62 @@
         <h2>Proving Photos Are Real in the Age of AI</h2>
         <p>Take a picture. A fingerprint of the file is recorded in a public registry run by journalism organizations. Anyone holding that file can check that it came from a registered camera, and no one can use the registry to find out which camera took it.</p>
         <div class="cta-buttons">
-            <a href="#how-it-works" class="btn btn-primary">See How It Works</a>
-            <a href="/verify.html" class="btn btn-secondary">Try Verification</a>
+            <a href="/how-it-works.html" class="btn btn-primary">See How It Works</a>
+            <a href="/foundation.html" class="btn btn-secondary">About the Foundation</a>
         </div>
     </div>
 </section>
 
 <section class="problem-section">
     <div class="container">
-        <h2>The Problem</h2>
+        <h2>The Argument</h2>
         <div class="problem-grid">
             <div class="problem-card">
-                <h3>AI-Generated Images Look Real</h3>
-                <p>Modern AI can create photorealistic images that are indistinguishable from real photographs. How do you know what's real?</p>
+                <h3>1. Looking Real No Longer Proves Anything</h3>
+                <p>AI can now produce images that pass as photographs, and any inconvenient photograph can be dismissed as fake. The useful question is no longer "does this look real?" but "where did this come from?" Only the capture hardware can answer that.</p>
             </div>
             <div class="problem-card">
-                <h3>Metadata Gets Stripped</h3>
-                <p>Embedded credentials such as C2PA Content Credentials live inside the file. Social media platforms routinely strip that data through compression and format conversion, so the proof is often gone by the time an image reaches its audience.</p>
+                <h3>2. Proof Inside the File Gets Stripped</h3>
+                <p>Embedded credentials such as C2PA Content Credentials live inside the file. Social media platforms routinely strip that data through compression and format conversion, so the proof is often gone by the time an image reaches its audience. The record has to live outside the file.</p>
             </div>
             <div class="problem-card">
-                <h3>A Record of Cameras Is a Map of Photographers</h3>
-                <p>A system that links cameras to images is also a map of who photographed what. For journalists, activists and their sources, a breach of that map is exactly the harm a provenance system must not cause.</p>
+                <h3>3. A Record of Cameras Is a Map of Photographers</h3>
+                <p>A registry that links cameras to images is also a map of who photographed what. For journalists, activists and their sources, a breach of that map is exactly the harm a provenance system must not cause. So the map must never be built.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section id="how-it-works" class="technical-section" style="background: var(--light-blue); scroll-margin-top: 80px;">
+<section class="technical-section" style="background: var(--light-blue);">
     <div class="container">
-        <h2>How It Works (3 Steps)</h2>
-
+        <h2>What Birthmark Does</h2>
         <div class="content-block" style="max-width: 800px; margin: 0 auto;">
-            <div class="diagram-box" style="background: white; margin-bottom: 2rem;">
-                <h3 style="color: var(--accent-blue);">Step 1: Take a Picture</h3>
-                <p>When the camera saves the image, it computes a "fingerprint" of the file (a SHA-256 hash). It then sends two separate messages along separate network paths: one carries the fingerprint, and the other carries the camera's encrypted credential. Neither message contains the image.</p>
-                <p style="margin-top: 1rem; font-style: italic; color: var(--gray-text);">The two messages are joined only by a one-way hash, so no single server that handles them can connect the camera to the picture.</p>
-            </div>
+            <p>When a registered camera saves a photo, it sends a fingerprint of the file (a SHA-256 hash) and its encrypted credential as two separate messages, along separate paths, to separate servers. The manufacturer confirms the camera is registered without ever seeing the fingerprint. Independent servers confirm the two messages belong together. Only then is the fingerprint recorded in the Birthmark Media Registry.</p>
 
-            <div class="diagram-box" style="background: white; margin-bottom: 2rem;">
-                <h3 style="color: var(--accent-blue);">Step 2: Checked, Then Recorded</h3>
-                <p>The camera's manufacturer confirms that the credential belongs to a registered device, without ever seeing the image fingerprint. Independent servers run by consortium members confirm that the two messages belong together. Only then is the fingerprint recorded in the Birthmark Media Registry, a blockchain run by journalism, fact-checking and press freedom organizations.</p>
-                <p style="margin-top: 1rem; font-style: italic; color: var(--gray-text);">The record holds no camera, manufacturer or photographer identifier. To make timing harder to trace, messages are deliberately delayed, so a record appears minutes after capture, not instantly.</p>
-            </div>
+            <p style="margin-top: 1rem;">The registry record holds no camera, manufacturer or photographer identifier. The information that would link a camera to a picture never comes together in one place, so a breach of any single server exposes a fragment, not a map. This is a property of the architecture, not a promise of good behavior, and it is backed by machine-checked proofs for each component.</p>
 
-            <div class="diagram-box" style="background: white;">
-                <h3 style="color: var(--accent-blue);">Step 3: Anyone Can Verify</h3>
-                <p>Anyone with a copy of the file can compute its fingerprint and look it up. A match shows that the file came from a registered device, along with how it was processed and a coarse registration time.</p>
-                <p style="margin-top: 1rem; font-style: italic; color: var(--gray-text);">Matching is exact: the copy must be identical to the registered file. An edit made in certified editing software creates a new record linked to the original. A change made anywhere else, including a platform's recompression, produces a file with no record.</p>
-            </div>
+            <p style="margin-top: 1rem;">The registry is a blockchain operated by a consortium of journalism, fact-checking and press freedom organizations, not by a technology company. There is no cryptocurrency and no transaction fee.</p>
+
+            <p style="margin-top: 1.5rem; text-align: center;"><a href="/how-it-works.html" style="color: var(--accent-blue); font-weight: 600; text-decoration: none;">See how the pieces fit together →</a></p>
         </div>
     </div>
 </section>
 
 <section class="technical-section">
     <div class="container">
-        <h2>Built So a Breach Exposes a Fragment, Not a Map</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">Servers get compromised. The Birthmark Protocol is designed so that the information needed to link a camera to a picture never comes together in one place, so a breach of any single part of the system doesn't reveal it.</p>
-
+        <h2>What It Proves, and What It Doesn't</h2>
         <div class="problem-grid">
             <div class="problem-card">
-                <h3>🔒 Two Separate Channels</h3>
-                <p>The image fingerprint and the camera credential travel on separate paths to separate servers. The manufacturer learns which camera is checking in but never sees what it photographed. The servers that handle the fingerprint never see the credential.</p>
-                <a href="/privacy-design.html#two-channels" style="color: var(--accent-blue); font-size: 0.9rem;">Learn more →</a>
+                <h3>✅ It Proves</h3>
+                <p>That a file came from a registered capture device, how it was processed, and roughly when it was registered. Edits made in certified editing software stay linked to the original.</p>
             </div>
-
             <div class="problem-card">
-                <h3>🧩 No Single Point of Exposure</h3>
-                <p>For each component of the system, we checked what an attacker holding all of its keys and data could learn. Machine-checked proofs show that no single component can link a camera to a picture. Linking them requires compromising components in different roles at once.</p>
-                <a href="/privacy-design.html#non-assembly" style="color: var(--accent-blue); font-size: 0.9rem;">Learn more →</a>
+                <h3>❌ It Doesn't Prove</h3>
+                <p>That the scene is true. A staged scene passes, as does a photo of a screen or print. Judging what an image shows still takes journalistic judgment.</p>
             </div>
-
             <div class="problem-card">
-                <h3>✅ No Single Party Can Forge a Record</h3>
-                <p>A record is written only after two of three independent checkpoints confirm the manufacturer's approval, and two content servers run by different operators submit matching entries. One compromised server, or even two of the three checkpoints, cannot create a false record.</p>
-                <a href="/privacy-design.html#forgery-resistance" style="color: var(--accent-blue); font-size: 0.9rem;">Learn more →</a>
-            </div>
-
-            <div class="problem-card">
-                <h3>🛡️ Records Live Outside the File</h3>
-                <p>Because the record is kept in the registry and not inside the image, stripping metadata can't remove it. Anyone with an exact copy of the registered file can check it, and certified editing software can link edited versions back to the original.</p>
-                <a href="/privacy-design.html#outside-the-file" style="color: var(--accent-blue); font-size: 0.9rem;">Learn more →</a>
+                <h3>⚠️ It Needs an Exact Copy</h3>
+                <p>Matching is exact. A file changed outside certified software, including by a platform's recompression, has no record. A missing record proves nothing on its own.</p>
             </div>
         </div>
     </div>
@@ -141,125 +100,11 @@
 
 <section class="technical-section" style="background: var(--light-gray);">
     <div class="container">
-        <h2>Current Status</h2>
-        <div class="content-block" style="max-width: 900px; margin: 0 auto;">
-            <h3>✅ Early Prototype</h3>
-            <p>An early prototype on Raspberry Pi 4 hardware demonstrated the full pipeline, from sensor capture to registry lookup, for an earlier version of the design.</p>
+        <h2>Where We Are</h2>
+        <div class="content-block" style="max-width: 800px; margin: 0 auto;">
+            <p>An early prototype on Raspberry Pi 4 hardware demonstrated the full pipeline, from sensor capture to registry lookup, for an earlier version of the design. The protocol has since been redesigned so that no single component can link a device to its content. Its privacy properties are checked with machine-verified proofs, and its resistance to timing analysis has been evaluated in simulation. Next comes a reference implementation of the current design, measured on real camera-class hardware, and a pilot with journalists and photographers.</p>
 
-            <h3 style="margin-top: 2rem;">✅ Current Protocol Design</h3>
-            <p>The protocol has since been redesigned around two separate channels, so that no single component can link a device to its content:</p>
-
-            <ul class="technical-list" style="margin-top: 1rem;">
-                <li>✅ Two-channel architecture with separate credential and content paths</li>
-                <li>✅ Machine-checked privacy proofs (ProVerif) for each component individually</li>
-                <li>✅ Simulated evaluation of timing and traffic analysis</li>
-                <li>✅ Compact registry records: 42 bytes per capture</li>
-            </ul>
-
-            <p style="margin-top: 2rem;"><strong>Not yet measured:</strong> Device-side costs for the current design are estimated from published benchmarks for the underlying cryptography. Measuring them on real hardware is part of the next phase.</p>
-
-            <div style="margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 8px;">
-                <h4>🎥 Demonstration Video (Coming Soon)</h4>
-                <p>We're producing a demonstration video showing the end-to-end workflow: capturing an image, submitting it for validation, and verifying it against the registry.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="technical-section">
-    <div class="container">
-        <h2>Roadmap: Beyond Photos</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem;">The same principles that authenticate photos can extend to other media types:</p>
-
-        <div class="problem-grid">
-            <div class="problem-card">
-                <h3>📹 Video Authentication</h3>
-                <p>Register video at capture so viewers can check that footage came from a registered camera.</p>
-                <p style="margin-top: 1rem; color: var(--gray-text); font-style: italic;">Target: Phase 3</p>
-            </div>
-
-            <div class="problem-card">
-                <h3>🎤 Audio Authentication</h3>
-                <p>Register audio recordings at capture so listeners can check that they came from registered recording hardware.</p>
-                <p style="margin-top: 1rem; color: var(--gray-text); font-style: italic;">Target: Phase 3</p>
-            </div>
-
-            <div class="problem-card">
-                <h3>🖥️ Screenshot Authentication</h3>
-                <p>Show that a screenshot came from a registered device, with a coarse registration time. Useful for documenting online content before deletion.</p>
-                <p style="margin-top: 1rem; color: var(--gray-text); font-style: italic;">Target: Phase 4</p>
-            </div>
-        </div>
-
-        <div class="content-block" style="max-width: 800px; margin: 2rem auto 0;">
-            <h3>Immediate Next Steps (Phase 2)</h3>
-            <ul class="technical-list">
-                <li><strong>Reference implementation:</strong> Build the current two-channel design and measure its cost on real camera-class hardware</li>
-                <li><strong>Mobile capture app:</strong> Native implementation for photographers (how phones hold their credential is still being specified)</li>
-                <li><strong>User testing:</strong> 50-100 journalists and photographers pilot program</li>
-                <li><strong>Developer SDKs:</strong> Tools for camera manufacturers and software developers</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<section class="why-section" style="background: var(--light-blue);">
-    <div class="container">
-        <h2>Why Birthmark Standard?</h2>
-        <div class="why-grid">
-            <div class="why-card">
-                <div class="why-icon">🔓</div>
-                <h3>Open Source</h3>
-                <p>All code is public. No corporate secrets or proprietary control.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-icon">🛡️</div>
-                <h3>Privacy First</h3>
-                <p>Only image fingerprints are stored, never the images themselves. Registry records name no camera, manufacturer or photographer.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-icon">🌐</div>
-                <h3>Decentralized</h3>
-                <p>No single company controls the network. Independent journalism and press freedom organizations operate the registry nodes.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-icon">💰</div>
-                <h3>No Tokens, No Fees</h3>
-                <p>A permissioned blockchain with no cryptocurrency, no gas fees and no transaction costs.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-icon">🤝</div>
-                <h3>Complements C2PA</h3>
-                <p>C2PA carries rich metadata inside the file. Birthmark keeps a record outside it, where metadata stripping can't reach.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-icon">⛓️</div>
-                <h3>Stored Outside the File</h3>
-                <p>The record can't be stripped away because it was never in the file. Edits made with certified software stay linked to the original.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="technical-section">
-    <div class="container">
-        <h2>Get Involved</h2>
-        <div class="problem-grid">
-            <div class="problem-card">
-                <h3>For Photographers & Journalists</h3>
-                <p>Join our pilot testing program. Help us understand authentication needs for your workflow.</p>
-                <p style="margin-top: 1rem;"><a href="/contact.html" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">Contact Us →</a></p>
-            </div>
-            <div class="problem-card">
-                <h3>For Developers</h3>
-                <p>Review the architecture, contribute code, or help with security audits.</p>
-                <p style="margin-top: 1rem;"><a href="https://github.com/Birthmark-Standard/Birthmark" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">View on GitHub →</a></p>
-            </div>
-            <div class="problem-card">
-                <h3>For Manufacturers</h3>
-                <p>Explore hardware integration opportunities and partnership possibilities.</p>
-                <p style="margin-top: 1rem;"><a href="/contact.html" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">Get in Touch →</a></p>
-            </div>
+            <p style="margin-top: 1.5rem; text-align: center;"><a href="/foundation.html#get-involved" class="btn" style="background: var(--accent-blue); color: white;">Get Involved</a></p>
         </div>
     </div>
 </section>
@@ -276,12 +121,8 @@
                 </div>
                 <div class="footer-section">
                     <h3>Resources</h3>
-                    <a href="/technical-architecture.html">Technical Architecture</a>
-                    <a href="/privacy-design.html">Privacy Design</a>
-                    <a href="/governance.html">Governance Plan</a>
-                    <a href="/investigation-framework.html">Investigation Framework</a>
-                    <a href="/blog/">Blog</a>
-                    <a href="/contact.html">Contact</a>
+                    <a href="/how-it-works.html">How It Works</a>
+                    <a href="/foundation.html">The Foundation</a>
                     <a href="https://github.com/Birthmark-Standard/Birthmark">GitHub Repository</a>
                 </div>
                 <div class="footer-section">
