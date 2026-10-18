@@ -62,7 +62,9 @@
         <h2>Purpose and Core Principles</h2>
 
         <div class="content-block">
-            <p>The Birthmark Media Registry provides a decentralized, tamper-evident ledger for recording image authentication data. The Registry stores cryptographic hashes of authenticated photographs along with associated metadata, enabling anyone to verify whether a photograph has been authenticated by a legitimate camera and when that authentication occurred.</p>
+            <p>The Birthmark Media Registry provides a decentralized, tamper-evident ledger for recording image authentication data. The Registry stores cryptographic hashes of authenticated photographs along with associated metadata, enabling anyone to check whether a photograph came from a registered capture device. Records hold no device, manufacturer or photographer identifier, and their timestamps are coarsened posting times, not capture times.</p>
+
+            <p style="margin-top: 1rem;">Coalition Members operate the Registry Nodes. Each Registry Node takes part in consensus and can serve in any of the protocol's server roles: relay, credential channel server, gatekeeper or content channel server. Camera manufacturers and software developers run the credential validators that confirm devices are registered. They are integrators, not Coalition Members, and they operate outside Coalition governance.</p>
 
             <p style="margin-top: 1rem;"><strong>Core Principles:</strong> Independence (no single entity controls the Registry), Transparency (all operations and governance publicly documented), Neutrality (verifies technical authenticity, not editorial content), Permanence (immutable data accessible indefinitely), and Public Good (serves the public interest, not operated for profit).</p>
         </div>
@@ -75,7 +77,7 @@
 
         <div class="content-block">
             <h3>Who Can Join</h3>
-            <p>Coalition Membership is open to organizations that demonstrate commitment to information integrity: established nonprofits, educational institutions, news organizations, or professional associations with missions aligned with journalism, fact-checking, press freedom, archival preservation, or information integrity. Members must have technical capability to operate a validator node (or contract for managed services) and commit to maintaining 95% uptime.</p>
+            <p>Coalition Membership is open to organizations that demonstrate commitment to information integrity: established nonprofits, educational institutions, news organizations, or professional associations with missions aligned with journalism, fact-checking, press freedom, archival preservation, or information integrity. Members must have technical capability to operate a Registry Node (or contract for managed services) and commit to maintaining 95% uptime.</p>
 
             <p style="margin-top: 1rem;"><strong>Conflict of Interest:</strong> Organizations whose primary mission is media production (news outlets, content creators, photography agencies) are ineligible due to inherent conflict of interest. Organizations that consume, analyze, or validate media (fact-checkers, press freedom advocates, academic institutions, archival organizations) are eligible.</p>
 
@@ -84,7 +86,7 @@
 
         <div class="content-block">
             <h3>Node Ownership and Rights</h3>
-            <p>Each Coalition Member purchases ownership of one or more validator node slots. Ownership includes validator authority (right to operate a node participating in consensus), governance rights (one vote per node), pre-configured node software with documentation and setup support, and Coalition representation.</p>
+            <p>Each Coalition Member purchases ownership of one or more Registry Node slots. Ownership includes the right to operate a node that participates in consensus and serves in the protocol's server roles, governance rights (one vote per node), pre-configured node software with documentation and setup support, and Coalition representation.</p>
 
             <p style="margin-top: 1rem;"><strong>Ownership Limits:</strong> No single organization may own more than 2 nodes or 10% of total nodes (whichever is higher). Related organizations count as a single entity.</p>
 
@@ -106,7 +108,7 @@
             <h3>Development and Transition</h3>
             <p><strong>Phase 1 (Current):</strong> The Foundation builds and validates Registry infrastructure. Organizations may participate as Founding Advisors (providing input on technical specifications and governance) with no voting rights or purchase obligation. The Foundation Board retains full authority during this phase.</p>
 
-            <p style="margin-top: 1rem;"><strong>Phase 2 (Production):</strong> Begins when Registry technology completes validation and 10 validator nodes are functionally operational. Node ownership becomes available for purchase by eligible organizations.</p>
+            <p style="margin-top: 1rem;"><strong>Phase 2 (Production):</strong> Begins when Registry technology completes validation and 10 Registry Nodes are functionally operational. Node ownership becomes available for purchase by eligible organizations.</p>
 
             <p style="margin-top: 1rem;"><strong>Governance Transition:</strong> The Foundation retains voting authority until one year after the first node sale, then governance transitions to the full Coalition model.</p>
         </div>
@@ -187,7 +189,7 @@
 
         <div class="content-block">
             <h3>Foundation Node Reserve</h3>
-            <p>The Foundation may operate up to 10 validator nodes for Network resilience. These nodes carry no voting rights, serve primarily as backup capacity, may be transitioned to new Coalition Members as they join, and incur operational costs borne by the Foundation. The Foundation's goal is zero ownership, with member-operated nodes preferred.</p>
+            <p>The Foundation may operate up to 10 Registry Nodes for Network resilience. These nodes carry no voting rights, serve primarily as backup capacity, may be transitioned to new Coalition Members as they join, and incur operational costs borne by the Foundation. The Foundation's goal is zero ownership, with member-operated nodes preferred.</p>
         </div>
 
         <div class="content-block">
@@ -202,7 +204,7 @@
         <h2>Registry Continuity</h2>
 
         <div class="content-block">
-            <p>The Registry is designed to operate independently of any single organization, including the Foundation. If the Foundation ceases operations, all node software and documentation remains open source and publicly available, Coalition Members retain full ownership and operational control of their nodes, the blockchain continues operating with minimum node count (3), Coalition governance structure remains in effect, and the Coalition may transfer administrative functions to another organization.</p>
+            <p>The Registry is designed to operate independently of any single organization, including the Foundation. If the Foundation ceases operations, all node software and documentation remains open source and publicly available, Coalition Members retain full ownership and operational control of their nodes, the blockchain continues operating as long as enough Registry Nodes remain to fill the protocol's server roles, Coalition governance structure remains in effect, and the Coalition may transfer administrative functions to another organization.</p>
         </div>
     </div>
 </section>

@@ -5,7 +5,7 @@ title: "Hardware-Backed Photo Authentication"
 <section class="hero">
     <div class="container">
         <h2>Proving Photos Are Real in the Age of AI</h2>
-        <p>A simple system: Take a picture. A unique fingerprint goes on a public blockchain. Anyone can verify it came from a real camera, not AI.</p>
+        <p>Take a picture. A fingerprint of the file is recorded in a public registry run by journalism organizations. Anyone holding that file can check that it came from a registered camera, and no one can use the registry to find out which camera took it.</p>
         <div class="cta-buttons">
             <a href="#how-it-works" class="btn btn-primary">See How It Works</a>
             <a href="/verify.html" class="btn btn-secondary">Try Verification</a>
@@ -23,11 +23,11 @@ title: "Hardware-Backed Photo Authentication"
             </div>
             <div class="problem-card">
                 <h3>Metadata Gets Stripped</h3>
-                <p>Social media platforms strip authentication data when you share images. Existing solutions like C2PA lose 95% of their metadata in real-world use.</p>
+                <p>Embedded credentials such as C2PA Content Credentials live inside the file. Social media platforms routinely strip that data through compression and format conversion, so the proof is often gone by the time an image reaches its audience.</p>
             </div>
             <div class="problem-card">
-                <h3>Trustworthiness Is Obscured</h3>
-                <p>Amid the sea of content both real and fake, journalists, photographers, and the public need a way to prove which images came from real cameras.</p>
+                <h3>A Record of Cameras Is a Map of Photographers</h3>
+                <p>A system that links cameras to images is also a map of who photographed what. For journalists, activists and their sources, a breach of that map is exactly the harm a provenance system must not cause.</p>
             </div>
         </div>
     </div>
@@ -35,25 +35,25 @@ title: "Hardware-Backed Photo Authentication"
 
 <section id="how-it-works" class="technical-section" style="background: var(--light-blue); scroll-margin-top: 80px;">
     <div class="container">
-        <h2>How It Works (3 Simple Steps)</h2>
+        <h2>How It Works (3 Steps)</h2>
 
         <div class="content-block" style="max-width: 800px; margin: 0 auto;">
             <div class="diagram-box" style="background: white; margin-bottom: 2rem;">
                 <h3 style="color: var(--accent-blue);">Step 1: Take a Picture</h3>
-                <p>Your camera captures the image and immediately creates a unique "fingerprint" (called a hash) of the raw sensor data. This happens automatically in the background.</p>
-                <p style="margin-top: 1rem; font-style: italic; color: var(--gray-text);">Think of it like a DNA sample from the image—unique and unforgeable.</p>
+                <p>When the camera saves the image, it computes a "fingerprint" of the file (a SHA-256 hash). It then sends two separate messages along separate network paths: one carries the fingerprint, and the other carries the camera's encrypted credential. Neither message contains the image.</p>
+                <p style="margin-top: 1rem; font-style: italic; color: var(--gray-text);">The two messages are joined only by a one-way hash, so no single server that handles them can connect the camera to the picture.</p>
             </div>
 
             <div class="diagram-box" style="background: white; margin-bottom: 2rem;">
-                <h3 style="color: var(--accent-blue);">Step 2: Hash Goes on Public Ledger</h3>
-                <p>That fingerprint is sent to a blockchain operated by journalism organizations, universities, and archives. They store it permanently in a public database.</p>
-                <p style="margin-top: 1rem; font-style: italic; color: var(--gray-text);">No one stores your image—just the fingerprint. Your photo stays private.</p>
+                <h3 style="color: var(--accent-blue);">Step 2: Checked, Then Recorded</h3>
+                <p>The camera's manufacturer confirms that the credential belongs to a registered device, without ever seeing the image fingerprint. Independent servers run by consortium members confirm that the two messages belong together. Only then is the fingerprint recorded in the Birthmark Media Registry, a blockchain run by journalism, fact-checking and press freedom organizations.</p>
+                <p style="margin-top: 1rem; font-style: italic; color: var(--gray-text);">The record holds no camera, manufacturer or photographer identifier. To make timing harder to trace, messages are deliberately delayed, so a record appears minutes after capture, not instantly.</p>
             </div>
 
             <div class="diagram-box" style="background: white;">
                 <h3 style="color: var(--accent-blue);">Step 3: Anyone Can Verify</h3>
-                <p>When someone sees your image online, they can check its fingerprint against the blockchain. If it matches, they know it came from a real camera at a specific time.</p>
-                <p style="margin-top: 1rem; font-style: italic; color: var(--gray-text);">Works even if the image was converted, cropped, or shared on social media.</p>
+                <p>Anyone with a copy of the file can compute its fingerprint and look it up. A match shows that the file came from a registered device, along with how it was processed and a coarse registration time.</p>
+                <p style="margin-top: 1rem; font-style: italic; color: var(--gray-text);">Matching is exact: the copy must be identical to the registered file. An edit made in certified editing software creates a new record linked to the original. A change made anywhere else, including a platform's recompression, produces a file with no record.</p>
             </div>
         </div>
     </div>
@@ -61,32 +61,32 @@ title: "Hardware-Backed Photo Authentication"
 
 <section class="technical-section">
     <div class="container">
-        <h2>Trust Without Access: Our Four Pillars of Privacy</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">The Birthmark Standard is designed to be incapable of betraying you—not through policy, but through architecture.</p>
+        <h2>Built So a Breach Exposes a Fragment, Not a Map</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">Servers get compromised. The Birthmark Protocol is designed so that the information needed to link a camera to a picture never comes together in one place, so a breach of any single part of the system doesn't reveal it.</p>
 
         <div class="problem-grid">
             <div class="problem-card">
-                <h3>🔒 Two-Packet Separation</h3>
-                <p>Authentication creates two separate data structures sent to different parties that are never combined. Manufacturers validate cameras without seeing what you photographed. The blockchain stores image hashes without knowing which specific camera authenticated them.</p>
-                <a href="/privacy-design.html#two-packet" style="color: var(--accent-blue); font-size: 0.9rem;">Learn more →</a>
+                <h3>🔒 Two Separate Channels</h3>
+                <p>The image fingerprint and the camera credential travel on separate paths to separate servers. The manufacturer learns which camera is checking in but never sees what it photographed. The servers that handle the fingerprint never see the credential.</p>
+                <a href="/privacy-design.html#two-channels" style="color: var(--accent-blue); font-size: 0.9rem;">Learn more →</a>
             </div>
 
             <div class="problem-card">
-                <h3>🎭 K-Anonymity (k ≥ 1,000)</h3>
-                <p>Your device is never a "party of one." Every camera randomly selects from assigned key tables shared by over 1,000 devices. Individual tracking is mathematically infeasible without manufacturer cooperation.</p>
-                <a href="/privacy-design.html#k-anonymity" style="color: var(--accent-blue); font-size: 0.9rem;">Learn more →</a>
+                <h3>🧩 No Single Point of Exposure</h3>
+                <p>For each component of the system, we checked what an attacker holding all of its keys and data could learn. Machine-checked proofs show that no single component can link a camera to a picture. Linking them requires compromising components in different roles at once.</p>
+                <a href="/privacy-design.html#non-assembly" style="color: var(--accent-blue); font-size: 0.9rem;">Learn more →</a>
             </div>
 
             <div class="problem-card">
-                <h3>✅ Dual-Approval Security</h3>
-                <p>No single server can forge a blockchain record. Every entry requires independent validation from two geographically separated submission servers. A single compromised operator cannot create fraudulent authentication.</p>
-                <a href="/privacy-design.html#dual-approval" style="color: var(--accent-blue); font-size: 0.9rem;">Learn more →</a>
+                <h3>✅ No Single Party Can Forge a Record</h3>
+                <p>A record is written only after two of three independent checkpoints confirm the manufacturer's approval, and two content servers run by different operators submit matching entries. One compromised server, or even two of the three checkpoints, cannot create a false record.</p>
+                <a href="/privacy-design.html#forgery-resistance" style="color: var(--accent-blue); font-size: 0.9rem;">Learn more →</a>
             </div>
 
             <div class="problem-card">
-                <h3>🛡️ Survivability Beyond Metadata</h3>
-                <p>Unlike systems that hide data in file headers, Birthmark identifies the "DNA" of the pixels themselves. Your authentication survives re-compression, format conversion, social media sharing, and even screenshots.</p>
-                <a href="/privacy-design.html#survivability" style="color: var(--accent-blue); font-size: 0.9rem;">Learn more →</a>
+                <h3>🛡️ Records Live Outside the File</h3>
+                <p>Because the record is kept in the registry and not inside the image, stripping metadata can't remove it. Anyone with an exact copy of the registered file can check it, and certified editing software can link edited versions back to the original.</p>
+                <a href="/privacy-design.html#outside-the-file" style="color: var(--accent-blue); font-size: 0.9rem;">Learn more →</a>
             </div>
         </div>
     </div>
@@ -96,22 +96,24 @@ title: "Hardware-Backed Photo Authentication"
     <div class="container">
         <h2>Current Status</h2>
         <div class="content-block" style="max-width: 900px; margin: 0 auto;">
-            <h3>✅ Phase 1: Hardware Prototype (Complete)</h3>
-            <p>We've built and validated a complete working system using Raspberry Pi hardware:</p>
+            <h3>✅ Early Prototype</h3>
+            <p>An early prototype on Raspberry Pi 4 hardware demonstrated the full pipeline, from sensor capture to registry lookup, for an earlier version of the design.</p>
+
+            <h3 style="margin-top: 2rem;">✅ Current Protocol Design</h3>
+            <p>The protocol has since been redesigned around two separate channels, so that no single component can link a device to its content:</p>
 
             <ul class="technical-list" style="margin-top: 1rem;">
-                <li>✅ Camera authentication from raw sensor to blockchain</li>
-                <li>✅ Manufacturer validation system</li>
-                <li>✅ Public blockchain (Substrate-based)</li>
-                <li>✅ Verification interface</li>
-                <li>✅ Storage optimization (69% reduction: 450 → 140 bytes/record)</li>
+                <li>✅ Two-channel architecture with separate credential and content paths</li>
+                <li>✅ Machine-checked privacy proofs (ProVerif) for each component individually</li>
+                <li>✅ Simulated evaluation of timing and traffic analysis</li>
+                <li>✅ Compact registry records: 42 bytes per capture</li>
             </ul>
 
-            <p style="margin-top: 2rem;"><strong>Economics:</strong> Operating a blockchain node costs $200-350/year even at 1 million images per day, making it sustainable for journalism institutions.</p>
+            <p style="margin-top: 2rem;"><strong>Not yet measured:</strong> Device-side costs for the current design are estimated from published benchmarks for the underlying cryptography. Measuring them on real hardware is part of the next phase.</p>
 
             <div style="margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 8px;">
                 <h4>🎥 Demonstration Video (Coming Soon)</h4>
-                <p>We're producing a complete demonstration video showing the end-to-end workflow: capturing an image, submitting it for validation, and verifying it on the blockchain.</p>
+                <p>We're producing a demonstration video showing the end-to-end workflow: capturing an image, submitting it for validation, and verifying it against the registry.</p>
             </div>
         </div>
     </div>
@@ -125,19 +127,19 @@ title: "Hardware-Backed Photo Authentication"
         <div class="problem-grid">
             <div class="problem-card">
                 <h3>📹 Video Authentication</h3>
-                <p>Hash individual frames or frame sequences to prove video came from real cameras. Detect deepfake insertions or frame manipulation.</p>
+                <p>Register video at capture so viewers can check that footage came from a registered camera.</p>
                 <p style="margin-top: 1rem; color: var(--gray-text); font-style: italic;">Target: Phase 3</p>
             </div>
 
             <div class="problem-card">
                 <h3>🎤 Audio Authentication</h3>
-                <p>Validate audio recordings from microphone hardware. Detect AI-generated voices or manipulated speech.</p>
+                <p>Register audio recordings at capture so listeners can check that they came from registered recording hardware.</p>
                 <p style="margin-top: 1rem; color: var(--gray-text); font-style: italic;">Target: Phase 3</p>
             </div>
 
             <div class="problem-card">
                 <h3>🖥️ Screenshot Authentication</h3>
-                <p>Prove screenshots came from specific devices at specific times. Useful for documenting online content before deletion.</p>
+                <p>Show that a screenshot came from a registered device, with a coarse registration time. Useful for documenting online content before deletion.</p>
                 <p style="margin-top: 1rem; color: var(--gray-text); font-style: italic;">Target: Phase 4</p>
             </div>
         </div>
@@ -145,10 +147,10 @@ title: "Hardware-Backed Photo Authentication"
         <div class="content-block" style="max-width: 800px; margin: 2rem auto 0;">
             <h3>Immediate Next Steps (Phase 2)</h3>
             <ul class="technical-list">
-                <li><strong>Android camera app:</strong> Native mobile implementation for photographers</li>
+                <li><strong>Reference implementation:</strong> Build the current two-channel design and measure its cost on real camera-class hardware</li>
+                <li><strong>Mobile capture app:</strong> Native implementation for photographers (how phones hold their credential is still being specified)</li>
                 <li><strong>User testing:</strong> 50-100 journalists and photographers pilot program</li>
                 <li><strong>Developer SDKs:</strong> Tools for camera manufacturers and software developers</li>
-                <li><strong>Performance optimization:</strong> Sub-100ms authentication overhead</li>
             </ul>
         </div>
     </div>
@@ -166,27 +168,27 @@ title: "Hardware-Backed Photo Authentication"
             <div class="why-card">
                 <div class="why-icon">🛡️</div>
                 <h3>Privacy First</h3>
-                <p>Only image fingerprints are stored, never the images themselves. Photographers stay anonymous.</p>
+                <p>Only image fingerprints are stored, never the images themselves. Registry records name no camera, manufacturer or photographer.</p>
             </div>
             <div class="why-card">
                 <div class="why-icon">🌐</div>
                 <h3>Decentralized</h3>
-                <p>No single company controls the network. Multiple institutions operate blockchain nodes.</p>
+                <p>No single company controls the network. Independent journalism and press freedom organizations operate the registry nodes.</p>
             </div>
             <div class="why-card">
                 <div class="why-icon">💰</div>
-                <h3>Zero Fees</h3>
-                <p>No gas fees, no transaction costs. Journalism organizations donate hosting as a public service.</p>
+                <h3>No Tokens, No Fees</h3>
+                <p>A permissioned blockchain with no cryptocurrency, no gas fees and no transaction costs.</p>
             </div>
             <div class="why-card">
                 <div class="why-icon">🤝</div>
-                <h3>C2PA Compatible</h3>
-                <p>C2PA provides rich metadata. Birthmark provides backup when metadata gets stripped.</p>
+                <h3>Complements C2PA</h3>
+                <p>C2PA carries rich metadata inside the file. Birthmark keeps a record outside it, where metadata stripping can't reach.</p>
             </div>
             <div class="why-card">
                 <div class="why-icon">⛓️</div>
-                <h3>Survives Metadata Loss</h3>
-                <p>Works even when images are shared on social media, converted to different formats, or cropped.</p>
+                <h3>Stored Outside the File</h3>
+                <p>The record can't be stripped away because it was never in the file. Edits made with certified software stay linked to the original.</p>
             </div>
         </div>
     </div>
