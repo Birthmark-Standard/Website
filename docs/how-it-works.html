@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works - The Birthmark Standard Foundation</title>
+    <link rel="icon" type="image/svg+xml" href="/Birthmark_logo_trimmed.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/styles.css">
+    
+
+
+</head>
+<body>
+        <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">
+                        <img src="/Birthmark_logo_transparent.svg" alt="Birthmark Standard Foundation Logo">
+                    </div>
+                    <h1><span class="the-prefix">The</span><span class="org-name">Birthmark Standard Foundation</span></h1>
+                </div>
+                <nav>
+                    <a href="/">Home</a>
+                    <a href="/how-it-works.html">How It Works</a>
+                    <a href="/foundation.html">The Foundation</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+    
+
+<section class="hero" style="padding: 3rem 0;">
+    <div class="container">
+        <h2>How It Works</h2>
+        <p style="max-width: 800px; margin: 0 auto;">How a photograph's fingerprint travels from the camera to a permanent public record, without any single server learning which camera took it.</p>
+    </div>
+</section>
+
+<section class="technical-section">
+    <div class="container">
+        <h2>One Picture, Two Messages</h2>
+        <p class="section-intro">The Birthmark Protocol splits the job of authenticating a photo across independently operated parts. Each one holds only what its own task requires.</p>
+
+        <div class="content-block">
+            <h3>1. The camera fingerprints the file</h3>
+            <p>When the camera saves a photo, it computes a SHA-256 hash of the whole file: the image's fingerprint. It then builds two separate messages. The <strong>content message</strong> carries the fingerprint. The <strong>credential message</strong> carries the camera's credential, encrypted so that only its manufacturer can read it. The two are tied together only by a one-way hash that includes a secret random number, so neither message can be traced to the other. The image itself is never sent anywhere.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>2. The messages travel separately</h3>
+            <p>Each message travels through its own relays, run by different operators. Only the first relay on each path sees the camera's network address, and it can't read the message or tell which kind it is. Every message is held for a random time and padded to a common size, so messages can't be matched up by timing or size.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>3. The manufacturer checks the camera</h3>
+            <p>The credential message goes to a server that forwards the credential to the camera's manufacturer. The manufacturer confirms the camera is registered and signs a verdict, but it receives the link to the content only in encrypted form, under a key it never holds. It learns which camera is checking in, never what it photographed.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>4. Independent checkpoints confirm the approval</h3>
+            <p>Three independent gatekeepers each check the manufacturer's approval and post it to their own board. Two content servers, run by different operators, each receive the content message directly from the camera and wait until two of the three boards confirm a matching approval.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>5. The registry writes the record</h3>
+            <p>The Birthmark Media Registry writes a record only when both content servers submit matching entries. A record for an original capture is 42 bytes: the fingerprint, a one-byte verdict describing how the image was processed, and a coarsened posting time. It names no camera, manufacturer, photographer or server. Because of the deliberate delays, a record appears minutes after capture, not instantly.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>6. Anyone can check</h3>
+            <p>Anyone holding a copy of the file can compute its fingerprint and look it up. No account or subscription is needed. The registry answers whether the file came from a registered device. It deliberately offers no reverse lookup, so it can't be searched to find out who took a picture.</p>
+        </div>
+    </div>
+</section>
+
+<section class="technical-section" style="background: var(--light-blue);">
+    <div class="container">
+        <h2>Who Can See What</h2>
+        <div class="content-block">
+            <p style="margin-bottom: 1.5rem;">What each part of the system can read for one photo, even if an attacker takes full control of it. No column holds both something that identifies the camera and the image fingerprint.</p>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <thead>
+                        <tr style="background: var(--accent-blue); color: white;">
+                            <th style="padding: 1rem; text-align: left; font-weight: 600; border-right: 1px solid rgba(255,255,255,0.2);">Data</th>
+                            <th style="padding: 1rem; text-align: center; font-weight: 600; border-right: 1px solid rgba(255,255,255,0.2);">First Relay</th>
+                            <th style="padding: 1rem; text-align: center; font-weight: 600; border-right: 1px solid rgba(255,255,255,0.2);">Manufacturer</th>
+                            <th style="padding: 1rem; text-align: center; font-weight: 600; border-right: 1px solid rgba(255,255,255,0.2);">Credential Server and Gatekeepers</th>
+                            <th style="padding: 1rem; text-align: center; font-weight: 600; border-right: 1px solid rgba(255,255,255,0.2);">Content Servers</th>
+                            <th style="padding: 1rem; text-align: center; font-weight: 600;">Registry and Public</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--light-gray);">
+                            <td style="padding: 0.75rem; font-weight: 600; border-right: 1px solid var(--light-gray);">Camera's network address</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: green;">&#x2705; Yes</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; color: red;">&#x274C; No</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--light-gray);">
+                            <td style="padding: 0.75rem; font-weight: 600; border-right: 1px solid var(--light-gray);">Which camera</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: green;">&#x2705; Yes</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No<br><span style="font-size: 0.85rem; color: #666;">(encrypted)</span></td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; color: red;">&#x274C; No</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--light-gray);">
+                            <td style="padding: 0.75rem; font-weight: 600; border-right: 1px solid var(--light-gray);">Image fingerprint</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: green;">&#x2705; Yes</td>
+                            <td style="padding: 0.75rem; text-align: center; color: green;">&#x2705; Yes</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--light-gray);">
+                            <td style="padding: 0.75rem; font-weight: 600; border-right: 1px solid var(--light-gray);">The image itself</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; color: red;">&#x274C; No</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.75rem; font-weight: 600; border-right: 1px solid var(--light-gray);">Photographer, location, capture time</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; color: red;">&#x274C; No</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top: 1.5rem; font-style: italic; color: #555;">The credential server also learns which group of devices a photo comes from (usually one manufacturer's), so a manufacturer with few registered devices offers a smaller crowd to hide in.</p>
+        </div>
+    </div>
+</section>
+
+<section class="technical-section">
+    <div class="container">
+        <h2>What It Would Take to Break It</h2>
+
+        <div class="content-block">
+            <h3>Linking a camera to a picture</h3>
+            <p>We tested each part of the system by giving an attacker all of its keys and everything it sees. Machine-checked proofs show that no single part, compromised alone, can link a camera to a picture. Doing so would take compromising the manufacturer together with the credential server, or the manufacturer together with a gatekeeper. These are run by organizations required to share no ownership, jurisdiction, administration, logs or keys, and the consortium's independence rules and audits exist to keep it that way.</p>
+            <p style="margin-top: 1rem;">Even then, the system holds no images, so every attempt to link a camera to a picture has to start from a specific image already in hand. No one can browse the registry to list photographers.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>Forging a record</h3>
+            <p>A record needs the manufacturer's signed approval, confirmation on two of three independent boards, and matching entries from two content servers run by different operators. Proofs show that one compromised content server can't write or alter a record, and that even two of the three gatekeepers together can't force a record the manufacturer never approved.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>Watching the traffic</h3>
+            <p>Random delays, padding, and sixty decoy photos always in transit make traffic hard to read. In simulation, no single compromised part identified the camera measurably more often than an outside observer holding no keys. This is a simulation result, not a proof.</p>
+        </div>
+    </div>
+</section>
+
+<section class="technical-section" style="background: var(--light-blue);">
+    <div class="container">
+        <h2>Edited Photos</h2>
+        <div class="content-block">
+            <p>An edited photo is a new file with a new fingerprint. Certified editing software registers it as a new record that points back to the original, using its own credential rather than the camera's. The software records which tools were used and checks the saved image against what those tools should have produced. The record's verdict shows the classes of tool used (tone and colour, detail, geometry, content removal or alteration, compositing) and flags any change the declared tools don't explain.</p>
+            <p style="margin-top: 1rem;">Edit records rest on the software and its developer's judgment, not on camera hardware, so they are a weaker guarantee than an original capture.</p>
+        </div>
+    </div>
+</section>
+
+<section class="technical-section" style="background: var(--light-gray);">
+    <div class="container">
+        <h2>Limits</h2>
+        <div class="content-block">
+            <ul class="technical-list">
+                <li><strong>Hardware origin, not truth:</strong> A staged scene, or a photo of a screen or print, still passes.</li>
+                <li><strong>Exact matching:</strong> Any change outside certified software, including recompression, resizing or a screenshot, produces a file with no record.</li>
+                <li><strong>Positive verification only:</strong> Photos from manufacturers that don't take part have no record, so a missing record proves nothing.</li>
+                <li><strong>Coordinated compromise:</strong> Compromising parts in different roles at once defeats the privacy guarantee. Governance prevents this; cryptography alone does not.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+
+        <footer id="about">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>The Birthmark Standard Foundation</h3>
+                    <p>Building open-source photo authentication infrastructure as a public good. No tokens, no speculation—just infrastructure for truth.</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">Fiscally sponsored by Aspiration Tech</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <a href="/how-it-works.html">How It Works</a>
+                    <a href="/foundation.html">The Foundation</a>
+                    <a href="https://github.com/Birthmark-Standard/Protocol">GitHub Repository</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <a href="mailto:contact@birthmarkstandard.org">contact@birthmarkstandard.org</a>
+                    <a href="https://www.linkedin.com/company/birthmarkstandard/">LinkedIn</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 The Birthmark Standard Foundation. Dual license: AGPL-3.0 (blockchain) / Apache-2.0 (tools).</p>
+            </div>
+        </div>
+    </footer>
+
+
+        <style>
+         
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            z-index: 1000;
+            top: 100%;
+            left: 0;
+            margin-top: 0;
+            padding-top: 0.25rem;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            text-decoration: none;
+            color: #333;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: var(--light-blue);
+            color: #333;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+         
+        .dropdown-menu a.external-link {
+            color: var(--accent-blue);
+        }
+
+        .dropdown-menu a.external-link:hover {
+            color: var(--accent-blue);
+            background-color: var(--light-blue);
+        }
+
+         
+        @media (max-width: 768px) {
+            .dropdown-toggle {
+                pointer-events: auto;
+            }
+
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                margin-top: 0.5rem;
+                padding-top: 0;
+                background-color: rgba(255, 255, 255, 0.95);
+            }
+
+             
+            .dropdown.active .dropdown-menu {
+                display: block;
+            }
+
+            .dropdown:hover .dropdown-menu {
+                display: none;
+            }
+        }
+    </style>
+
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.innerWidth <= 768) {
+                const dropdowns = document.querySelectorAll('.dropdown');
+
+                dropdowns.forEach(dropdown => {
+                    const toggle = dropdown.querySelector('.dropdown-toggle');
+
+                    toggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+
+                        
+                        dropdowns.forEach(other => {
+                            if (other !== dropdown) {
+                                other.classList.remove('active');
+                            }
+                        });
+
+                        
+                        dropdown.classList.toggle('active');
+                    });
+                });
+
+                
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.dropdown')) {
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+
+
+    
+
+
+<style>
+.section-intro {
+    font-size: 1.1rem;
+    color: var(--gray-text);
+    margin-bottom: 2rem;
+}
+
+</style>
+
+
+</body>
+</html>
