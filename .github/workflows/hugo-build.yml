@@ -28,16 +28,16 @@ jobs:
           extended: true
 
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v5
 
       - name: Build
-        working-directory: website
         run: hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs
+          path: public
 
   deploy:
     needs: build

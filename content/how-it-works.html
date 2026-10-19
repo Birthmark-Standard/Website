@@ -1,0 +1,323 @@
+---
+title: "How It Works"
+figures: true
+extra_css:
+  - "/css/technical-detail.css"
+url: "/how-it-works.html"
+aliases:
+  - "/technical-architecture.html"
+  - "/privacy-design.html"
+  - "/verify.html"
+  - "/investigation-framework.html"
+extra_styles: |
+  .section-intro {
+      font-size: 1.1rem;
+      color: var(--gray-text);
+      margin-bottom: 2rem;
+  }
+---
+
+<section class="hero" style="padding: 3rem 0;">
+    <div class="container">
+        <h2>How It Works</h2>
+        <p style="max-width: 800px; margin: 0 auto;">This page follows a photo from the shutter to the check.</p>
+    </div>
+</section>
+
+<section class="technical-section">
+    <div class="container">
+        <h2 id="registering" style="scroll-margin-top: 80px;">From camera to registry</h2>
+        <div class="content-block" style="max-width: 900px; margin: 0 auto;">
+<figure class="bm-fig" id="bm-p1">
+  <div class="bm-plot">
+<svg viewBox="-4 -4 768 348" role="img" aria-label="Three steps. You take a photo with a registered camera and keep the photo. Only a fingerprint of the file leaves the camera. The registry keeps a small record of the fingerprint, how the photo was processed and roughly when. The registry holds no copy of the photo, no name and no location.">
+  <rect class="bm-f-ph-soft" x="0" y="20" width="300" height="250" rx="16"/>
+  <text class="bm-lbl bm-tx-ph" x="20" y="48">YOUR SIDE</text>
+  <use href="#bm-i-camera" class="bm-c-ph" x="26" y="84" width="92" height="92"/>
+  <use href="#bm-i-photo" class="bm-c-ph" x="182" y="84" width="92" height="92"/>
+  <line class="bm-arrow bm-s-ph" x1="124" y1="130" x2="172" y2="130" marker-end="url(#bm-a-ph)"/>
+  <text class="bm-t16 bm-tb" x="72" y="206" text-anchor="middle">Your camera</text>
+  <text class="bm-t14 bm-tm" x="72" y="227" text-anchor="middle">registered</text>
+  <text class="bm-t16 bm-tb" x="228" y="206" text-anchor="middle">Your photo</text>
+  <text class="bm-t14 bm-tm" x="228" y="227" text-anchor="middle">stays with you</text>
+
+  <g shape-rendering="crispEdges"><rect class="bm-f-ph" x="364" y="86" width="6" height="6"/><rect class="bm-f-ph" x="376" y="86" width="6" height="6"/><rect class="bm-f-ph" x="352" y="92" width="6" height="6"/><rect class="bm-f-ph" x="370" y="92" width="6" height="6"/><rect class="bm-f-ph" x="346" y="98" width="6" height="6"/><rect class="bm-f-ph" x="358" y="98" width="6" height="6"/><rect class="bm-f-ph" x="376" y="98" width="6" height="6"/><rect class="bm-f-ph" x="346" y="104" width="6" height="6"/><rect class="bm-f-ph" x="352" y="104" width="6" height="6"/><rect class="bm-f-ph" x="370" y="104" width="6" height="6"/><rect class="bm-f-ph" x="388" y="104" width="6" height="6"/><rect class="bm-f-ph" x="346" y="110" width="6" height="6"/><rect class="bm-f-ph" x="352" y="110" width="6" height="6"/><rect class="bm-f-ph" x="358" y="110" width="6" height="6"/><rect class="bm-f-ph" x="364" y="110" width="6" height="6"/><rect class="bm-f-ph" x="370" y="110" width="6" height="6"/><rect class="bm-f-ph" x="388" y="110" width="6" height="6"/><rect class="bm-f-ph" x="358" y="116" width="6" height="6"/><rect class="bm-f-ph" x="376" y="116" width="6" height="6"/><rect class="bm-f-ph" x="388" y="116" width="6" height="6"/><rect class="bm-f-ph" x="352" y="122" width="6" height="6"/><rect class="bm-f-ph" x="358" y="122" width="6" height="6"/><rect class="bm-f-ph" x="364" y="122" width="6" height="6"/><rect class="bm-f-ph" x="370" y="122" width="6" height="6"/><rect class="bm-f-ph" x="382" y="122" width="6" height="6"/><rect class="bm-f-ph" x="352" y="128" width="6" height="6"/><rect class="bm-f-ph" x="358" y="128" width="6" height="6"/><rect class="bm-f-ph" x="364" y="128" width="6" height="6"/><rect class="bm-f-ph" x="370" y="128" width="6" height="6"/><rect class="bm-f-ph" x="382" y="128" width="6" height="6"/></g>
+  <rect class="bm-s-line" fill="none" x="346" y="86" width="48" height="48" rx="3"/>
+  <line class="bm-arrow bm-s-ph" x1="308" y1="160" x2="432" y2="160" marker-end="url(#bm-a-ph)"/>
+  <text class="bm-t13 bm-tb" x="370" y="186" text-anchor="middle">Fingerprint only</text>
+  <text class="bm-t13 bm-tm" x="370" y="204" text-anchor="middle">leaves the camera</text>
+
+  <rect class="bm-f-surface2 bm-s-line" x="440" y="20" width="320" height="250" rx="16"/>
+  <text class="bm-lbl" x="460" y="48">THE REGISTRY</text>
+  <rect class="bm-f-surface bm-s-line" x="460" y="60" width="280" height="116" rx="10"/>
+  <text class="bm-t15 bm-tb" x="476" y="84">One small record</text>
+  <use href="#bm-i-ok" class="bm-c-ph" x="476" y="94" width="18" height="18"/>
+  <text class="bm-t14" x="502" y="108">Fingerprint of the file</text>
+  <use href="#bm-i-ok" class="bm-c-ph" x="476" y="116" width="18" height="18"/>
+  <text class="bm-t14" x="502" y="130">How it was processed</text>
+  <use href="#bm-i-ok" class="bm-c-ph" x="476" y="138" width="18" height="18"/>
+  <text class="bm-t14" x="502" y="152">Roughly when</text>
+  <rect class="bm-f-stop-soft" x="460" y="188" width="280" height="68" rx="10"/>
+  <use href="#bm-i-photo" class="bm-c-stop" x="474" y="202" width="40" height="40"/>
+  <line class="bm-s-stop" x1="470" y1="244" x2="518" y2="200" stroke-width="3.4" stroke-linecap="round"/>
+  <text class="bm-t16 bm-tb bm-tx-stop" x="530" y="218">No copy of your photo</text>
+  <text class="bm-t14 bm-tm" x="530" y="240">No name. No location.</text>
+
+  <text class="bm-t15 bm-tb" x="150" y="312" text-anchor="middle"><tspan class="bm-tx-ph">1</tspan>  Take the photo</text>
+  <text class="bm-t15 bm-tb" x="370" y="312" text-anchor="middle"><tspan class="bm-tx-ph">2</tspan>  Send the fingerprint</text>
+  <text class="bm-t15 bm-tb" x="600" y="312" text-anchor="middle"><tspan class="bm-tx-ph">3</tspan>  Registry keeps a record</text>
+</svg>
+  </div>
+  <figcaption>Your photo stays with you. Only a fingerprint of the file leaves the camera. The registry holds that fingerprint, how the photo was processed and roughly when, and holds no copy of the image.</figcaption>
+</figure>
+            <ol style="padding-left: 1.5rem;">
+                <li style="margin-bottom: 0.75rem;"><strong>Take.</strong> A registered camera computes a fingerprint of the photo. The photo itself is never sent.</li>
+                <li style="margin-bottom: 0.75rem;"><strong>Send.</strong> Only the fingerprint goes to the registry. The camera's proof of registration travels separately, so no single system sees both who took a photo and what it shows.</li>
+                <li><strong>Record.</strong> The registry keeps a small record: the fingerprint, a verdict on how the image was processed, and a coarsened time. It holds no copy of the image, no name and no location.</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<section class="technical-section" style="background: var(--light-blue);">
+    <div class="container">
+        <h2 id="checking" style="scroll-margin-top: 80px;">Checking a photo</h2>
+        <div class="content-block" style="max-width: 900px; margin: 0 auto;">
+            <p>Anyone with the file can check it. The registry offers no reverse lookup, so you need the file to find its record.</p>
+<figure class="bm-fig" id="bm-v1">
+  <div class="bm-plot">
+<svg viewBox="-4 -4 768 464" role="img" aria-label="Illustration of checking a photo. You drop in a file and an arrow leads to each of three possible results: registered original, registered and edited, or no record found. No record found is not proof the photo is fake, only that the chain of custody is broken.">
+  <rect class="bm-f-surface bm-s-line" x="0" y="20" width="230" height="408" rx="16"/>
+  <text class="bm-lbl" x="20" y="48">PHOTO CHECKER</text>
+  <rect class="bm-f-vf-soft bm-s-vf bm-dash" x="20" y="66" width="190" height="270" rx="12"/>
+  <use href="#bm-i-file" class="bm-c-vf" x="82" y="140" width="66" height="66"/>
+  <text class="bm-t15 bm-tb" x="115" y="258" text-anchor="middle">Drop a photo here</text>
+  <text class="bm-t13 bm-tm" x="115" y="278" text-anchor="middle">The exact file</text>
+  <text class="bm-t14 bm-tb bm-tx-vf" x="115" y="372" text-anchor="middle">1  Drop in the file</text>
+  <text class="bm-t13 bm-tm" x="115" y="394" text-anchor="middle">Illustration, not a live tool</text>
+
+  <path class="bm-arrow bm-s-vf" d="M236 191 H240 Q250 191 250 181 V80 Q250 70 260 70 H274" marker-end="url(#bm-a-vf)"/>
+  <path class="bm-arrow bm-s-vf" d="M236 191 H274" marker-end="url(#bm-a-vf)"/>
+  <path class="bm-arrow bm-s-vf" d="M236 191 H240 Q250 191 250 201 V335 Q250 345 260 345 H274" marker-end="url(#bm-a-vf)"/>
+
+  <rect class="bm-f-surface bm-s-line" x="280" y="20" width="480" height="100" rx="14"/>
+  <circle class="bm-f-vf" cx="326" cy="70" r="24"/>
+  <use href="#bm-i-ok" class="bm-c-onvf" x="310" y="54" width="32" height="32"/>
+  <text class="bm-t16 bm-tb" x="368" y="52">Registered original</text>
+  <text class="bm-t14 bm-tm" x="368" y="75">Came from a registered camera.</text>
+  <text class="bm-t14 bm-tm" x="368" y="95">Shows roughly when it was registered.</text>
+
+  <rect class="bm-f-surface bm-s-line" x="280" y="132" width="480" height="118" rx="14"/>
+  <circle class="bm-f-vf" cx="326" cy="191" r="24"/>
+  <use href="#bm-i-pencil" class="bm-c-onvf" x="311" y="176" width="30" height="30"/>
+  <text class="bm-t16 bm-tb" x="368" y="164">Registered, edited</text>
+  <text class="bm-t14 bm-tm" x="368" y="187">Edited in certified software.</text>
+  <text class="bm-t14 bm-tm" x="368" y="207">Shows how, and links to the fingerprint of</text>
+  <text class="bm-t14 bm-tm" x="368" y="227">the original.</text>
+
+  <rect class="bm-f-surface bm-s-line bm-dash" x="280" y="262" width="480" height="166" rx="14"/>
+  <circle class="bm-f-surface2 bm-s-vf" cx="326" cy="345" r="24"/>
+  <use href="#bm-i-q" class="bm-c-vf" x="310" y="329" width="32" height="32"/>
+  <text class="bm-t16 bm-tb" x="368" y="294">No record found</text>
+  <text class="bm-t14 bm-tm" x="368" y="317">This is not proof the photo is fake, only that</text>
+  <text class="bm-t14 bm-tm" x="368" y="337">the chain of custody is broken.</text>
+  <text class="bm-t14 bm-tm" x="368" y="363">The file may be re-saved or edited outside</text>
+  <text class="bm-t14 bm-tm" x="368" y="383">certified software, or come from a manufacturer</text>
+  <text class="bm-t14 bm-tm" x="368" y="403">that does not take part.</text>
+
+  <text class="bm-t14 bm-tb bm-tx-vf" x="520" y="449" text-anchor="middle">2  Get a result</text>
+</svg>
+  </div>
+  <figcaption>Illustration of checking a photo. Drop in a file and get one of three results. No record found does not prove the photo is fake, only that the chain of custody is broken.</figcaption>
+</figure>
+            <p>Three possible results:</p>
+            <ul class="technical-list">
+                <li><strong>Registered original.</strong> Came from a registered camera. Shows roughly when it was registered.</li>
+                <li><strong>Registered, edited.</strong> Edited in certified software. Shows how, and links to the fingerprint of the original.</li>
+                <li><strong>No record found.</strong> This is not proof the photo is fake, only that the chain of custody is broken. The file may be re-saved or edited outside certified software, or come from a manufacturer that does not take part.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="technical-section">
+    <div class="container">
+        <h2 id="editing" style="scroll-margin-top: 80px;">Editing a photo</h2>
+        <div class="content-block" style="max-width: 900px; margin: 0 auto;">
+            <p>Certified Media Processing Software creates a new record linked to the original. These records carry a weaker guarantee than original captures, because they depend on the software developer's judgment. Any change outside certified software, including recompression or a screenshot, produces no record.</p>
+<figure class="bm-fig" id="bm-p2">
+  <div class="bm-plot">
+<svg viewBox="-4 -4 768 348" role="img" aria-label="Two paths for an edited photo. Edit in certified editing software and the registry gets a new record linked back to your original. Edit with any other tool, or re-save or screenshot the file, and the edited file has no record. The original keeps its own record.">
+  <path class="bm-arrow bm-s-ph bm-dash" d="M645 62 V38 H85 V124" marker-end="url(#bm-a-ph)"/>
+  <text class="bm-t13 bm-tx-ph" x="365" y="29" text-anchor="middle">linked back to your original</text>
+
+  <rect class="bm-f-surface bm-s-line" x="0" y="130" width="170" height="116" rx="12"/>
+  <use href="#bm-i-photo" class="bm-c-ph" x="63" y="142" width="44" height="44"/>
+  <text class="bm-t15 bm-tb" x="85" y="210" text-anchor="middle">Your original</text>
+  <text class="bm-t13 bm-tm" x="85" y="229" text-anchor="middle">registered at capture</text>
+
+  <polyline class="bm-arrow bm-s-ph" fill="none" points="172,170 220,170 220,100 264,100" marker-end="url(#bm-a-ph)"/>
+  <polyline class="bm-arrow bm-s-stop bm-dash" fill="none" points="172,206 220,206 220,270 264,270" marker-end="url(#bm-a-stop)"/>
+
+  <rect class="bm-f-ph-soft bm-s-ph" x="270" y="62" width="200" height="76" rx="12"/>
+  <use href="#bm-i-pencil" class="bm-c-ph" x="284" y="86" width="28" height="28"/>
+  <text class="bm-t15 bm-tb" x="324" y="95">Certified editing</text>
+  <text class="bm-t15 bm-tb" x="324" y="115">software</text>
+
+  <rect class="bm-f-stop-soft" x="270" y="232" width="200" height="76" rx="12"/>
+  <use href="#bm-i-pencil" class="bm-c-stop" x="284" y="256" width="28" height="28"/>
+  <text class="bm-t15 bm-tb" x="324" y="265">Any other tool</text>
+  <text class="bm-t13 bm-tm" x="324" y="286">re-save or screenshot</text>
+
+  <line class="bm-arrow bm-s-ph" x1="472" y1="100" x2="524" y2="100" marker-end="url(#bm-a-ph)"/>
+  <line class="bm-arrow bm-s-stop bm-dash" x1="472" y1="270" x2="524" y2="270" marker-end="url(#bm-a-stop)"/>
+
+  <rect class="bm-f-surface bm-s-ph" x="530" y="56" width="230" height="88" rx="12"/>
+  <use href="#bm-i-link" class="bm-c-ph" x="544" y="68" width="28" height="28"/>
+  <text class="bm-t16 bm-tb" x="582" y="88">New record</text>
+  <text class="bm-t14 bm-tm" x="544" y="114">Linked to your original.</text>
+  <text class="bm-t14 bm-tm" x="544" y="133">Shows it was edited, and how.</text>
+
+  <rect class="bm-f-surface bm-s-stop bm-dash" x="530" y="226" width="230" height="88" rx="12"/>
+  <use href="#bm-i-x" class="bm-c-stop" x="544" y="238" width="28" height="28"/>
+  <text class="bm-t16 bm-tb" x="582" y="258">No record</text>
+  <text class="bm-t14 bm-tm" x="544" y="284">The edited file has no record.</text>
+  <text class="bm-t14 bm-tm" x="544" y="303">Your original keeps its own.</text>
+</svg>
+  </div>
+  <figcaption>Edit in certified software and the registry gets a new record linked to your original. Use any other tool, or re-save or screenshot the file, and the edited file has no record. Your original keeps its own.</figcaption>
+</figure>
+        </div>
+    </div>
+</section>
+
+<section class="technical-section" style="background: var(--light-gray);">
+    <div class="container">
+        <details class="bm-tech">
+            <summary>
+              <h2>Technical detail</h2>
+              <span class="bm-tech-sub">One picture, two messages. Who can see what. What it would take to break it.</span>
+              <span class="bm-tech-chev" aria-hidden="true"></span>
+            </summary>
+<div class="technical-section">
+    <div class="container">
+        <h3>One Picture, Two Messages</h3>
+        <p class="section-intro">The Birthmark Protocol splits the job of authenticating a photo across independently operated parts. Each one holds only what its own task requires.</p>
+
+        <div class="content-block">
+            <h4>1. The camera fingerprints the file</h4>
+            <p>When the camera saves a photo, it computes a SHA-256 hash of the whole file: the image's fingerprint. It then builds two separate messages. The <strong>content message</strong> carries the fingerprint. The <strong>credential message</strong> carries the camera's credential, encrypted so that only its manufacturer can read it. The two are tied together only by a one-way hash that includes a secret random number, so neither message can be traced to the other. The image itself is never sent anywhere.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>2. The messages travel separately</h4>
+            <p>Each message travels through its own relays, run by different operators. Only the first relay on each path sees the camera's network address, and it can't read the message or tell which kind it is. Every message is held for a random time and padded to a common size, so messages can't be matched up by timing or size.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>3. The manufacturer checks the camera</h4>
+            <p>The credential message goes to a server that forwards the credential to the camera's manufacturer. The manufacturer confirms the camera is registered and signs a verdict, but it receives the link to the content only in encrypted form, under a key it never holds. It learns which camera is checking in, never what it photographed.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>4. Independent checkpoints confirm the approval</h4>
+            <p>Three independent gatekeepers each check the manufacturer's approval and post it to their own board. Two content servers, run by different operators, each receive the content message directly from the camera and wait until two of the three boards confirm a matching approval.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>5. The registry writes the record</h4>
+            <p>The Birthmark Media Registry writes a record only when both content servers submit matching entries. A record for an original capture is 42 bytes: the fingerprint, a one-byte verdict describing how the image was processed, and a coarsened posting time. It names no camera, manufacturer, photographer or server. Because of the deliberate delays, a record appears minutes after capture, not instantly.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>6. Anyone can check</h4>
+            <p>Anyone holding a copy of the file can compute its fingerprint and look it up. No account or subscription is needed. The registry answers whether the file came from a registered device. It deliberately offers no reverse lookup, so it can't be searched to find out who took a picture.</p>
+        </div>
+    </div>
+</div>
+
+<div class="technical-section" style="background: var(--light-blue);">
+    <div class="container">
+        <h3>Who Can See What</h3>
+        <div class="content-block">
+            <p style="margin-bottom: 1.5rem;">What each part of the system can read for one photo, even if an attacker takes full control of it. No single component holds both something that identifies the camera and the image fingerprint.</p>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <thead>
+                        <tr style="background: var(--accent-blue); color: white;">
+                            <th style="padding: 1rem; text-align: left; font-weight: 600; border-right: 1px solid rgba(255,255,255,0.2);">Data</th>
+                            <th style="padding: 1rem; text-align: center; font-weight: 600; border-right: 1px solid rgba(255,255,255,0.2);">First Relay</th>
+                            <th style="padding: 1rem; text-align: center; font-weight: 600; border-right: 1px solid rgba(255,255,255,0.2);">Manufacturer</th>
+                            <th style="padding: 1rem; text-align: center; font-weight: 600; border-right: 1px solid rgba(255,255,255,0.2);">Credential Server and Gatekeepers</th>
+                            <th style="padding: 1rem; text-align: center; font-weight: 600; border-right: 1px solid rgba(255,255,255,0.2);">Content Servers</th>
+                            <th style="padding: 1rem; text-align: center; font-weight: 600;">Registry and Public</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--light-gray);">
+                            <td style="padding: 0.75rem; font-weight: 600; border-right: 1px solid var(--light-gray);">Camera's network address</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: green;">&#x2705; Yes</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; color: red;">&#x274C; No</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--light-gray);">
+                            <td style="padding: 0.75rem; font-weight: 600; border-right: 1px solid var(--light-gray);">Which camera</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: green;">&#x2705; Yes</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No<br><span style="font-size: 0.85rem; color: #666;">(encrypted)</span></td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; color: red;">&#x274C; No</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--light-gray);">
+                            <td style="padding: 0.75rem; font-weight: 600; border-right: 1px solid var(--light-gray);">Image fingerprint</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: green;">&#x2705; Yes</td>
+                            <td style="padding: 0.75rem; text-align: center; color: green;">&#x2705; Yes</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--light-gray);">
+                            <td style="padding: 0.75rem; font-weight: 600; border-right: 1px solid var(--light-gray);">The image itself</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; color: red;">&#x274C; No</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.75rem; font-weight: 600; border-right: 1px solid var(--light-gray);">Photographer, location, capture time</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; border-right: 1px solid var(--light-gray); color: red;">&#x274C; No</td>
+                            <td style="padding: 0.75rem; text-align: center; color: red;">&#x274C; No</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top: 1.5rem; font-style: italic; color: #555;">The credential server also learns which group of devices a photo comes from (usually one manufacturer's), so a manufacturer with few registered devices offers a smaller crowd to hide in.</p>
+        </div>
+    </div>
+</div>
+
+<div class="technical-section">
+    <div class="container">
+        <h3>What It Would Take to Break It</h3>
+
+        <div class="content-block">
+            <h4>Linking a camera to a picture</h4>
+            <p>We tested each part of the system by giving an attacker all of its keys and everything it sees. Twelve security properties are machine-checked across eleven ProVerif models. Linking a camera to a picture would take compromising the manufacturer together with the credential server, or the manufacturer together with a gatekeeper. These are run by organizations required to share no ownership, jurisdiction, administration, logs or keys, and the consortium's independence rules and audits exist to keep it that way.</p>
+            <p style="margin-top: 1rem;">Even then, the system holds no images, so every attempt to link a camera to a picture has to start from a specific image already in hand. No one can browse the registry to list photographers.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Forging a record</h4>
+            <p>A record needs the manufacturer's signed approval, confirmation on two of three independent boards, and matching entries from two content servers run by different operators. Proofs show that one compromised content server can't write or alter a record, and that even two of the three gatekeepers together can't force a record the manufacturer never approved.</p>
+        </div>
+    </div>
+</div>
+        </details>
+    </div>
+</section>

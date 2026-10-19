@@ -1,0 +1,14 @@
+baseURL = 'https://birthmarkstandard.org/'
+languageCode = 'en-us'
+title = 'The Birthmark Standard Foundation'
+disableKinds = ['taxonomy', 'term', 'RSS', 'sitemap']
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["HTML"]
+  section = ["HTML"]
+  page = ["HTML"]
