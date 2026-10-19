@@ -1,5 +1,6 @@
 ---
 title: "Hardware-Backed Photo Authentication"
+figures: true
 ---
 
 <section class="hero">
@@ -14,68 +15,165 @@ title: "Hardware-Backed Photo Authentication"
     </div>
 </section>
 
-<section class="problem-section">
+<section class="technical-section">
     <div class="container">
-        <h2>The Argument</h2>
-        <div class="problem-grid">
-            <div class="problem-card">
-                <h3>1. Looking Real No Longer Proves Anything</h3>
-                <p>AI can now produce images that pass as photographs, and any inconvenient photograph can be dismissed as fake. The useful question is no longer "does this look real?" but "where did this come from?" Only the capture hardware can answer that.</p>
-            </div>
-            <div class="problem-card">
-                <h3>2. Proof Inside the File Gets Stripped</h3>
-                <p>Embedded credentials such as C2PA Content Credentials live inside the file. Social media platforms routinely strip that data through compression and format conversion, so the proof is often gone by the time an image reaches its audience. The record has to live outside the file.</p>
-            </div>
-            <div class="problem-card">
-                <h3>3. A Record of Cameras Is a Map of Photographers</h3>
-                <p>A registry that links cameras to images is also a map of who photographed what. For journalists, activists and their sources, a breach of that map is exactly the harm a provenance system must not cause. So the map must never be built.</p>
-            </div>
-        </div>
+<div class="bm-doors">
+  <a class="bm-door bm-door-ph" href="how-it-works.html#registering">
+    <span class="bm-door-ic"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#bm-i-camera"/></svg></span>
+    <h3 class="bm-door-title">I take photos</h3>
+    <p class="bm-door-text">Register a photo when you take it. Your photo stays with you, and the record carries no name or location.</p>
+    <span class="bm-door-go">See how registering works &rarr;</span>
+  </a>
+  <a class="bm-door bm-door-vf" href="how-it-works.html#checking">
+    <span class="bm-door-ic"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#bm-i-magnify"/></svg></span>
+    <h3 class="bm-door-title">I check photos</h3>
+    <p class="bm-door-text">Find out whether a photo came from a registered camera, and whether it was edited afterward.</p>
+    <span class="bm-door-go">See how checking works &rarr;</span>
+  </a>
+  <a class="bm-door bm-door-nd" href="foundation.html#get-involved">
+    <span class="bm-door-ic"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#bm-i-node"/></svg></span>
+    <h3 class="bm-door-title">I run a node</h3>
+    <p class="bm-door-text">Journalism and fact-checking organizations can advise now and run a validator node when ownership opens.</p>
+    <span class="bm-door-go">See how to get involved &rarr;</span>
+  </a>
+</div>
     </div>
 </section>
 
 <section class="technical-section" style="background: var(--light-blue);">
     <div class="container">
-        <h2>What Birthmark Does</h2>
+        <h2>How it works</h2>
         <div class="content-block" style="max-width: 800px; margin: 0 auto;">
-            <p>When a registered camera saves a photo, it sends a fingerprint of the file (a SHA-256 hash) and its encrypted credential as two separate messages, along separate paths, to separate servers. The manufacturer confirms the camera is registered without ever seeing the fingerprint. Independent servers confirm the two messages belong together. Only then is the fingerprint recorded in the Birthmark Media Registry.</p>
-
-            <p style="margin-top: 1rem;">The registry record holds no camera, manufacturer or photographer identifier. The information that would link a camera to a picture never comes together in one place, so a breach of any single server exposes a fragment, not a map. This is a property of the architecture, not a promise of good behavior, and it is backed by machine-checked proofs for each component.</p>
-
-            <p style="margin-top: 1rem;">The registry is a blockchain operated by a consortium of journalism, fact-checking and press freedom organizations, not by a technology company. There is no cryptocurrency and no transaction fee.</p>
-
-            <p style="margin-top: 1.5rem; text-align: center;"><a href="/how-it-works.html" style="color: var(--accent-blue); font-weight: 600; text-decoration: none;">See how the pieces fit together →</a></p>
+            <p>A registered camera computes a fingerprint of each photo. The registry records the fingerprint, a verdict on how the image was processed, and a coarsened time. The registry never receives the photo, and no single system sees both who took it and what it shows. Anyone with the file can check it.</p>
+            <p style="margin-top: 1.5rem; text-align: center;"><a href="/how-it-works.html" style="color: var(--accent-blue); font-weight: 600; text-decoration: none;">See how it works &rarr;</a></p>
         </div>
     </div>
 </section>
 
 <section class="technical-section">
     <div class="container">
-        <h2>What It Proves, and What It Doesn't</h2>
-        <div class="problem-grid">
-            <div class="problem-card">
-                <h3>✅ It Proves</h3>
-                <p>That a file came from a registered capture device, how it was processed, and roughly when it was registered. Edits made in certified editing software stay linked to the original.</p>
-            </div>
-            <div class="problem-card">
-                <h3>❌ It Doesn't Prove</h3>
-                <p>That the scene is true. A staged scene passes, as does a photo of a screen or print. Judging what an image shows still takes journalistic judgment.</p>
-            </div>
-            <div class="problem-card">
-                <h3>⚠️ It Needs an Exact Copy</h3>
-                <p>Matching is exact. A file changed outside certified software, including by a platform's recompression, has no record. A missing record proves nothing on its own.</p>
-            </div>
+        <h2>The fingerprint</h2>
+        <div class="content-block" style="max-width: 900px; margin: 0 auto;">
+            <p>Change one pixel and the whole fingerprint changes. A record matches only an exact copy of a file.</p>
+<figure class="bm-fig" id="bm-h2">
+  <div class="bm-plot">
+<svg viewBox="-4 -4 768 380" role="img" aria-label="The same tiny picture twice. Changing a single pixel produces a completely different fingerprint, so a record matches only an exact copy of a file.">
+  <text class="bm-lbl" x="0" y="20">ORIGINAL</text>
+  <text class="bm-lbl" x="430" y="20">ONE PIXEL CHANGED</text>
+
+  <rect class="bm-s-line" fill="none" x="-1" y="35" width="194" height="146" rx="3"/>
+  <g shape-rendering="crispEdges"><rect x="0" y="36" width="192" height="12" fill="#8ec5ef"/><rect x="0" y="48" width="132" height="12" fill="#8ec5ef"/><rect x="132" y="48" width="24" height="12" fill="#ffd75e"/><rect x="156" y="48" width="36" height="12" fill="#8ec5ef"/><rect x="0" y="60" width="132" height="12" fill="#8ec5ef"/><rect x="132" y="60" width="24" height="12" fill="#ffd75e"/><rect x="156" y="60" width="36" height="12" fill="#8ec5ef"/><rect x="0" y="72" width="192" height="12" fill="#b5dcf5"/><rect x="0" y="84" width="192" height="12" fill="#b5dcf5"/><rect x="0" y="96" width="132" height="12" fill="#b5dcf5"/><rect x="132" y="96" width="24" height="12" fill="#5aa05a"/><rect x="156" y="96" width="36" height="12" fill="#b5dcf5"/><rect x="0" y="108" width="96" height="12" fill="#b5dcf5"/><rect x="96" y="108" width="84" height="12" fill="#5aa05a"/><rect x="180" y="108" width="12" height="12" fill="#b5dcf5"/><rect x="0" y="120" width="84" height="12" fill="#b5dcf5"/><rect x="84" y="120" width="48" height="12" fill="#5aa05a"/><rect x="132" y="120" width="24" height="12" fill="#3d7a45"/><rect x="156" y="120" width="36" height="12" fill="#5aa05a"/><rect x="0" y="132" width="36" height="12" fill="#5aa05a"/><rect x="36" y="132" width="12" height="12" fill="#b5dcf5"/><rect x="48" y="132" width="48" height="12" fill="#5aa05a"/><rect x="96" y="132" width="84" height="12" fill="#3d7a45"/><rect x="180" y="132" width="12" height="12" fill="#5aa05a"/><rect x="0" y="144" width="84" height="12" fill="#5aa05a"/><rect x="84" y="144" width="108" height="12" fill="#3d7a45"/><rect x="0" y="156" width="192" height="12" fill="#2f5f3a"/><rect x="0" y="168" width="192" height="12" fill="#2f5f3a"/></g>
+  <rect class="bm-s-line" fill="none" x="429" y="35" width="194" height="146" rx="3"/>
+  <g shape-rendering="crispEdges"><rect x="430" y="36" width="192" height="12" fill="#8ec5ef"/><rect x="430" y="48" width="36" height="12" fill="#8ec5ef"/><rect x="466" y="48" width="12" height="12" fill="#b5dcf5"/><rect x="478" y="48" width="84" height="12" fill="#8ec5ef"/><rect x="562" y="48" width="24" height="12" fill="#ffd75e"/><rect x="586" y="48" width="36" height="12" fill="#8ec5ef"/><rect x="430" y="60" width="132" height="12" fill="#8ec5ef"/><rect x="562" y="60" width="24" height="12" fill="#ffd75e"/><rect x="586" y="60" width="36" height="12" fill="#8ec5ef"/><rect x="430" y="72" width="192" height="12" fill="#b5dcf5"/><rect x="430" y="84" width="192" height="12" fill="#b5dcf5"/><rect x="430" y="96" width="132" height="12" fill="#b5dcf5"/><rect x="562" y="96" width="24" height="12" fill="#5aa05a"/><rect x="586" y="96" width="36" height="12" fill="#b5dcf5"/><rect x="430" y="108" width="96" height="12" fill="#b5dcf5"/><rect x="526" y="108" width="84" height="12" fill="#5aa05a"/><rect x="610" y="108" width="12" height="12" fill="#b5dcf5"/><rect x="430" y="120" width="84" height="12" fill="#b5dcf5"/><rect x="514" y="120" width="48" height="12" fill="#5aa05a"/><rect x="562" y="120" width="24" height="12" fill="#3d7a45"/><rect x="586" y="120" width="36" height="12" fill="#5aa05a"/><rect x="430" y="132" width="36" height="12" fill="#5aa05a"/><rect x="466" y="132" width="12" height="12" fill="#b5dcf5"/><rect x="478" y="132" width="48" height="12" fill="#5aa05a"/><rect x="526" y="132" width="84" height="12" fill="#3d7a45"/><rect x="610" y="132" width="12" height="12" fill="#5aa05a"/><rect x="430" y="144" width="84" height="12" fill="#5aa05a"/><rect x="514" y="144" width="108" height="12" fill="#3d7a45"/><rect x="430" y="156" width="192" height="12" fill="#2f5f3a"/><rect x="430" y="168" width="192" height="12" fill="#2f5f3a"/></g>
+  <circle class="bm-s-stop" fill="none" stroke-width="2.6" cx="472" cy="54" r="11"/>
+  <text class="bm-t13 bm-tx-stop bm-tb" x="486" y="68">1 pixel</text>
+
+  <line class="bm-arrow bm-s-muted" x1="96" y1="190" x2="96" y2="222" marker-end="url(#bm-a-muted)"/>
+  <text class="bm-t13 bm-tm" x="110" y="211">SHA-256</text>
+  <line class="bm-arrow bm-s-muted" x1="526" y1="190" x2="526" y2="222" marker-end="url(#bm-a-muted)"/>
+  <text class="bm-t13 bm-tm" x="540" y="211">SHA-256</text>
+
+  <rect class="bm-s-line" fill="none" x="-1" y="233" width="98" height="98" rx="2"/>
+  <g shape-rendering="crispEdges"><rect class="bm-f-fg" x="36" y="234" width="12" height="12"/><rect class="bm-f-fg" x="60" y="234" width="12" height="12"/><rect class="bm-f-fg" x="12" y="246" width="12" height="12"/><rect class="bm-f-fg" x="48" y="246" width="12" height="12"/><rect class="bm-f-fg" x="0" y="258" width="12" height="12"/><rect class="bm-f-fg" x="24" y="258" width="12" height="12"/><rect class="bm-f-fg" x="60" y="258" width="12" height="12"/><rect class="bm-f-fg" x="0" y="270" width="12" height="12"/><rect class="bm-f-fg" x="12" y="270" width="12" height="12"/><rect class="bm-f-fg" x="48" y="270" width="12" height="12"/><rect class="bm-f-fg" x="84" y="270" width="12" height="12"/><rect class="bm-f-fg" x="0" y="282" width="12" height="12"/><rect class="bm-f-fg" x="12" y="282" width="12" height="12"/><rect class="bm-f-fg" x="24" y="282" width="12" height="12"/><rect class="bm-f-fg" x="36" y="282" width="12" height="12"/><rect class="bm-f-fg" x="48" y="282" width="12" height="12"/><rect class="bm-f-fg" x="84" y="282" width="12" height="12"/><rect class="bm-f-fg" x="24" y="294" width="12" height="12"/><rect class="bm-f-fg" x="60" y="294" width="12" height="12"/><rect class="bm-f-fg" x="84" y="294" width="12" height="12"/><rect class="bm-f-fg" x="12" y="306" width="12" height="12"/><rect class="bm-f-fg" x="24" y="306" width="12" height="12"/><rect class="bm-f-fg" x="36" y="306" width="12" height="12"/><rect class="bm-f-fg" x="48" y="306" width="12" height="12"/><rect class="bm-f-fg" x="72" y="306" width="12" height="12"/><rect class="bm-f-fg" x="12" y="318" width="12" height="12"/><rect class="bm-f-fg" x="24" y="318" width="12" height="12"/><rect class="bm-f-fg" x="36" y="318" width="12" height="12"/><rect class="bm-f-fg" x="48" y="318" width="12" height="12"/><rect class="bm-f-fg" x="72" y="318" width="12" height="12"/></g>
+  <rect class="bm-s-line" fill="none" x="429" y="233" width="98" height="98" rx="2"/>
+  <g shape-rendering="crispEdges"><rect class="bm-f-fg" x="454" y="234" width="12" height="12"/><rect class="bm-f-fg" x="466" y="234" width="12" height="12"/><rect class="bm-f-fg" x="490" y="234" width="12" height="12"/><rect class="bm-f-fg" x="430" y="246" width="12" height="12"/><rect class="bm-f-fg" x="442" y="246" width="12" height="12"/><rect class="bm-f-fg" x="454" y="246" width="12" height="12"/><rect class="bm-f-fg" x="466" y="246" width="12" height="12"/><rect class="bm-f-fg" x="478" y="246" width="12" height="12"/><rect class="bm-f-fg" x="490" y="246" width="12" height="12"/><rect class="bm-f-fg" x="502" y="246" width="12" height="12"/><rect class="bm-f-fg" x="514" y="246" width="12" height="12"/><rect class="bm-f-fg" x="430" y="258" width="12" height="12"/><rect class="bm-f-fg" x="442" y="258" width="12" height="12"/><rect class="bm-f-fg" x="490" y="258" width="12" height="12"/><rect class="bm-f-fg" x="514" y="258" width="12" height="12"/><rect class="bm-f-fg" x="454" y="270" width="12" height="12"/><rect class="bm-f-fg" x="478" y="270" width="12" height="12"/><rect class="bm-f-fg" x="502" y="270" width="12" height="12"/><rect class="bm-f-fg" x="514" y="270" width="12" height="12"/><rect class="bm-f-fg" x="454" y="282" width="12" height="12"/><rect class="bm-f-fg" x="466" y="282" width="12" height="12"/><rect class="bm-f-fg" x="478" y="282" width="12" height="12"/><rect class="bm-f-fg" x="490" y="282" width="12" height="12"/><rect class="bm-f-fg" x="502" y="282" width="12" height="12"/><rect class="bm-f-fg" x="430" y="294" width="12" height="12"/><rect class="bm-f-fg" x="442" y="294" width="12" height="12"/><rect class="bm-f-fg" x="430" y="306" width="12" height="12"/><rect class="bm-f-fg" x="466" y="306" width="12" height="12"/><rect class="bm-f-fg" x="442" y="318" width="12" height="12"/><rect class="bm-f-fg" x="478" y="318" width="12" height="12"/><rect class="bm-f-fg" x="490" y="318" width="12" height="12"/></g>
+  <text class="bm-t13 bm-tm" x="112" y="262">Fingerprint begins</text>
+  <text class="bm-t14" x="112" y="284" style="font-family:var(--bm-mono)">1448a4c9</text>
+  <text class="bm-t14" x="112" y="304" style="font-family:var(--bm-mono)">f9257a7a ...</text>
+  <text class="bm-t13 bm-tm" x="542" y="262">Fingerprint begins</text>
+  <text class="bm-t14" x="542" y="284" style="font-family:var(--bm-mono)">34ffc52b</text>
+  <text class="bm-t14" x="542" y="304" style="font-family:var(--bm-mono)">3ec0904c ...</text>
+
+  <text class="bm-tb" x="380" y="292" text-anchor="middle" style="font-size:34px">&#8800;</text>
+  <text class="bm-t15 bm-tb" x="380" y="362" text-anchor="middle">Change one pixel and the whole fingerprint changes.</text>
+</svg>
+  </div>
+  <figcaption>The same 16 by 12 pixel picture twice, with one pixel changed. The fingerprint is the real SHA-256 of the picture's pixel values, drawn as an 8 by 8 pattern from its first 64 bits. A record matches only an exact copy of a file.</figcaption>
+</figure>
         </div>
     </div>
 </section>
 
 <section class="technical-section" style="background: var(--light-gray);">
     <div class="container">
-        <h2>Where We Are</h2>
-        <div class="content-block" style="max-width: 800px; margin: 0 auto;">
-            <p>An early prototype on Raspberry Pi 4 hardware demonstrated the full pipeline, from sensor capture to registry lookup, for an earlier version of the design. The protocol has since been redesigned so that no single component can link a device to its content. Its privacy properties are checked with machine-verified proofs, and its resistance to timing analysis has been evaluated in simulation. Next comes a reference implementation of the current design, measured on real camera-class hardware, and a pilot with journalists and photographers.</p>
+        <div class="content-block" style="max-width: 900px; margin: 0 auto;">
+            <h2>What a record proves</h2>
+            <ul class="technical-list">
+                <li>The file came from a registered capture device.</li>
+                <li>How the image was processed after capture.</li>
+                <li>Roughly when it was registered.</li>
+            </ul>
 
-            <p style="margin-top: 1.5rem; text-align: center;"><a href="/foundation.html#get-involved" class="btn" style="background: var(--accent-blue); color: white;">Get Involved</a></p>
+            <h2 style="margin-top: 2rem;">What a record does not prove</h2>
+            <ul class="technical-list">
+                <li>That the scene is true. Staged scenes and photos of screens pass.</li>
+                <li>Anything about a photo from a manufacturer that does not participate. A missing record is not evidence of fakery.</li>
+            </ul>
+<figure class="bm-fig" id="bm-v2">
+  <div class="bm-plot">
+<svg viewBox="-4 -4 768 308" role="img" aria-label="A photo's life in four stages. The scene itself is not covered. Capture by a registered camera is covered. A certified edit is covered with a weaker guarantee. Any other change loses the record.">
+  <!-- columns at x = 0, 196, 392, 588; width 172 -->
+  <text class="bm-lbl" x="86" y="22" text-anchor="middle">THE SCENE</text>
+  <text class="bm-lbl" x="282" y="22" text-anchor="middle">CAPTURE</text>
+  <text class="bm-lbl" x="478" y="22" text-anchor="middle">CERTIFIED EDIT</text>
+  <text class="bm-lbl" x="674" y="22" text-anchor="middle">ANY OTHER CHANGE</text>
+
+  <rect class="bm-f-surface2 bm-s-line bm-dash" x="0" y="34" width="172" height="244" rx="14"/>
+  <use href="#bm-i-x" class="bm-c-muted" x="66" y="52" width="40" height="40"/>
+  <text class="bm-t16 bm-tb" x="86" y="124" text-anchor="middle">Not covered</text>
+  <text class="bm-t14 bm-tm" x="86" y="152" text-anchor="middle">A record cannot say</text>
+  <text class="bm-t14 bm-tm" x="86" y="172" text-anchor="middle">the scene is true.</text>
+  <text class="bm-t14 bm-tm" x="86" y="198" text-anchor="middle">Staged scenes and</text>
+  <text class="bm-t14 bm-tm" x="86" y="218" text-anchor="middle">photos of screens</text>
+  <text class="bm-t14 bm-tm" x="86" y="238" text-anchor="middle">still pass.</text>
+
+  <rect class="bm-f-vf-soft bm-s-vf" x="196" y="34" width="172" height="244" rx="14"/>
+  <use href="#bm-i-ok" class="bm-c-vf" x="262" y="52" width="40" height="40"/>
+  <text class="bm-t16 bm-tb" x="282" y="124" text-anchor="middle">Covered</text>
+  <text class="bm-t14" x="282" y="152" text-anchor="middle">A registered camera</text>
+  <text class="bm-t14" x="282" y="172" text-anchor="middle">records a fingerprint</text>
+  <text class="bm-t14" x="282" y="192" text-anchor="middle">of the file, how it</text>
+  <text class="bm-t14" x="282" y="212" text-anchor="middle">was processed, and</text>
+  <text class="bm-t14" x="282" y="232" text-anchor="middle">roughly when.</text>
+
+  <rect class="bm-f-surface bm-s-vf" x="392" y="34" width="172" height="244" rx="14"/>
+  <use href="#bm-i-half" class="bm-c-vf" x="458" y="52" width="40" height="40"/>
+  <text class="bm-t16 bm-tb" x="478" y="124" text-anchor="middle">Covered, weaker</text>
+  <text class="bm-t14" x="478" y="152" text-anchor="middle">Certified software</text>
+  <text class="bm-t14" x="478" y="172" text-anchor="middle">writes a new record</text>
+  <text class="bm-t14" x="478" y="192" text-anchor="middle">linked to the original.</text>
+  <text class="bm-t14 bm-tm" x="478" y="218" text-anchor="middle">It relies on the</text>
+  <text class="bm-t14 bm-tm" x="478" y="238" text-anchor="middle">developer's judgment.</text>
+
+  <rect class="bm-f-stop-soft" x="588" y="34" width="172" height="244" rx="14"/>
+  <use href="#bm-i-x" class="bm-c-stop" x="654" y="52" width="40" height="40"/>
+  <text class="bm-t16 bm-tb" x="674" y="124" text-anchor="middle">Record lost</text>
+  <text class="bm-t14" x="674" y="152" text-anchor="middle">A re-save, crop or</text>
+  <text class="bm-t14" x="674" y="172" text-anchor="middle">screenshot makes a</text>
+  <text class="bm-t14" x="674" y="192" text-anchor="middle">new file with no</text>
+  <text class="bm-t14" x="674" y="218" text-anchor="middle">record. Only an exact</text>
+  <text class="bm-t14" x="674" y="238" text-anchor="middle">copy of a registered</text>
+  <text class="bm-t14" x="674" y="258" text-anchor="middle">file matches.</text>
+
+  <path class="bm-chev bm-s-muted" d="M180 146 l8 10 l-8 10"/>
+  <path class="bm-chev bm-s-muted" d="M376 146 l8 10 l-8 10"/>
+  <path class="bm-chev bm-s-muted" d="M572 146 l8 10 l-8 10"/>
+</svg>
+  </div>
+  <figcaption>A photo's life from the scene to later changes. A record covers capture, covers certified edits with a weaker guarantee, and does not cover the scene or any other change.</figcaption>
+</figure>
+        </div>
+    </div>
+</section>
+
+<section class="technical-section">
+    <div class="container">
+        <h2>Status</h2>
+        <div class="content-block" style="max-width: 800px; margin: 0 auto;">
+            <p>The protocol is specified, formally modeled and simulated. Twelve security properties are machine-checked across eleven ProVerif models. An earlier design ran on a Raspberry Pi 4 prototype.</p>
+            <!-- TODO(Sam): simulation figure from Appendix D, with its unit, for the Status text -->
+            <p style="margin-top: 1rem;"><strong>Next:</strong> a reference implementation on camera-class hardware, then a pilot with journalists and photographers. Journalism and press-freedom organizations will operate the registry once it launches.</p>
+            <p style="margin-top: 1.5rem; text-align: center;"><a href="/research.html" style="color: var(--accent-blue); font-weight: 600; text-decoration: none;">Read the papers &rarr;</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@birthmarkstandard.org" style="color: var(--accent-blue); font-weight: 600; text-decoration: none;">Contact</a></p>
         </div>
     </div>
 </section>

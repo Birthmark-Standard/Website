@@ -101,6 +101,14 @@ nav a:hover {
     text-align: center;
 }
 
+.hero h1 {
+    display: block;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
 .hero h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
@@ -417,6 +425,7 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .hero h1,
     .hero h2 {
         font-size: 2rem;
     }
