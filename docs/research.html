@@ -39,47 +39,54 @@
 <section class="hero" style="padding: 3rem 0;">
     <div class="container">
         <h1>Research</h1>
-        <p style="max-width: 800px; margin: 0 auto;">The Foundation publishes its protocol, its formal models and its specification openly. Anyone can read them, run the models and check the claims.</p>
+        <p style="max-width: 800px; margin: 0 auto;">The Foundation publishes its protocol papers and its formal models openly. Anyone can read them, run the models and check the claims.</p>
     </div>
 </section>
 
 <section class="technical-section" style="background: var(--light-gray);">
     <div class="container">
-        <h2>Documents</h2>
+        <h2>Papers</h2>
         <div class="content-block" style="max-width: 800px; margin: 0 auto;">
-            <ol class="doc-list">
+            <ul class="doc-list">
                 <li>
                     <h3>The Birthmark Protocol: Achieving Semantic Non-Assembly in Media Provenance</h3>
-                    <p>The privacy architecture, the per-component compromise analysis and the simulation.</p>
+                    <p>In an ordinary provenance design, whoever checks the camera and records the photo can link the two, and that link is a map of who photographed what. This paper describes a protocol that never builds the map. It splits the work across independently operated components, so no single component holds what it takes to link a camera to a photo.</p>
+                    <p>The paper evaluates the design one component at a time. For each component, it asks whether an attacker who holds everything that component holds can assemble the link. Twelve security properties are machine-checked in ProVerif. Timing and traffic leakage, which the proofs do not model, are measured in simulation. The paper also describes a reference deployment, the Birthmark Standard, and estimates its device-side cost from published benchmarks.</p>
                     <!-- TODO(Sam): paper status and link -->
                 </li>
                 <li>
                     <h3>The Birthmark Protocol Integration</h3>
-                    <p>Devices, tokens, validators and the edit workflow.</p>
+                    <p>The Protocol paper gives the architecture. This paper specifies the parts that architecture assumes: the packets a camera builds, the format of its token, and the validator that checks the token and returns a verdict without reading the photo's fingerprint. It also specifies the edit workflow, in which each edit becomes a new record chained to its parent.</p>
+                    <p>The paper estimates the camera's cost from published benchmarks and states that no figure is yet measured on this design. It says which governance protections the protocol structure already provides and which remain necessary. It lists its own limits: exact-file hashing, software-attested edits, per-manufacturer anonymity sets and a blinded-key construction that has not been reviewed.</p>
                     <p class="doc-status">Preprint on arXiv (2602.04933). Not peer reviewed. <a href="https://arxiv.org/abs/2602.04933">arXiv &rarr;</a></p>
                     <!-- TODO(Sam): confirm the replacement version is posted before launch -->
                 </li>
-                <li>
-                    <h3>ProVerif models</h3>
-                    <p>Eleven models, twelve security properties. Each model has a twin with one deliberate fault, so a passing result can be told from an empty one.</p>
-                    <p class="doc-status">Published in the repository. <a href="https://github.com/Birthmark-Standard/Protocol">Repository &rarr;</a></p>
-                    <!-- TODO(Sam): path to the models folder -->
-                </li>
-                <li>
-                    <h3>Per-leg message specification</h3>
-                    <p>Every message on every leg of the pipeline.</p>
-                    <p class="doc-status">Published in the repository. <a href="https://github.com/Birthmark-Standard/Protocol">Repository &rarr;</a></p>
-                    <!-- TODO(Sam): path to the spec -->
-                </li>
-            </ol>
+            </ul>
         </div>
     </div>
 </section>
 
 <section class="technical-section">
     <div class="container">
+        <h2>Formal models</h2>
         <div class="content-block" style="max-width: 800px; margin: 0 auto;">
-            <p>The models verify protocol logic, not a specific implementation. Code is licensed AGPL-3.0 for the blockchain component and Apache-2.0 for the tools. Technical specifications are published as prior art.</p>
+            <ul class="doc-list">
+                <li>
+                    <h3>What a ProVerif model is</h3>
+                    <p>ProVerif is a tool that checks security protocols automatically. A model is a precise description of a protocol, written so the tool can test it. The tool assumes an attacker who controls the network and holds everything a chosen compromised component holds. It then asks whether that attacker can break a stated property, such as linking a camera to a photo or forging a record.</p>
+                    <p>The Foundation publishes eleven models that cover twelve security properties. Each model has a twin with one deliberate fault. The twin must fail. If it did not, a passing result would prove nothing. The models check the logic of the protocol, not a specific implementation.</p>
+                    <p class="doc-status">Published in the repository. <a href="https://github.com/Birthmark-Standard/Protocol">Repository &rarr;</a></p>
+                    <!-- TODO(Sam): path to the models folder -->
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="technical-section" style="background: var(--light-gray);">
+    <div class="container">
+        <div class="content-block" style="max-width: 800px; margin: 0 auto;">
+            <p>Code is licensed AGPL-3.0 for the blockchain component and Apache-2.0 for the tools. Technical specifications are published as prior art.</p>
             <p class="doc-links" style="margin-top: 1.5rem; text-align: center;"><a href="https://github.com/Birthmark-Standard/Protocol">Repository</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@birthmarkstandard.org">Contact</a></p>
         </div>
     </div>
@@ -245,6 +252,9 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     padding: 1.5rem;
     margin-bottom: 1rem;
+}
+.doc-list p + p {
+    margin-top: 0.75rem;
 }
 .doc-list h3 {
     margin: 0 0 0.5rem 0;
