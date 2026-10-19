@@ -4,13 +4,13 @@ This repository builds https://birthmarkstandard.org, the public site of The Bir
 
 ## Structure
 
-- `website/content/`: pages are `.html` files with front matter. `figures: true` loads the figure sprite and `figures.css`. `extra_css` adds stylesheets. `url` sets the page address. `aliases` create redirect pages for old addresses (`technical-architecture.html`, `privacy-design.html`, `verify.html`, `investigation-framework.html`, `contact.html`, `governance.html`). Keep the aliases.
-- `website/layouts/`: templates. The header, footer and figure sprite are partials.
-- `website/static/`: copied as is. Stylesheets, logos, images, `CNAME`, blog admin.
-- `docs/`: built output, committed. Never edit it by hand. Build with Hugo.
-- Build: `cd website && hugo --minify`. Hugo 0.139.0 extended.
+- `content/`: pages are `.html` files with front matter. `figures: true` loads the figure sprite and `figures.css`. `extra_css` adds stylesheets. `url` sets the page address. `aliases` create redirect pages for old addresses (`technical-architecture.html`, `privacy-design.html`, `verify.html`, `investigation-framework.html`, `contact.html`, `governance.html`). Keep the aliases.
+- `layouts/`: templates. The header, footer and figure sprite are partials.
+- `static/`: copied as is. `css/` holds the stylesheets, `images/` the logos and photos, `org/` the Governance Charter. `CNAME` and `favicon.ico` stay at the top of `static/`.
+- `public/`: build output. It is not committed. The GitHub Actions workflow builds and deploys the site on every push to `main`.
+- Build: `hugo --minify` from the repository root. Hugo 0.139.0 extended.
 
-Everything under `docs/` and `website/static/` is public. Do not put working documents, drafts or internal notes there.
+Everything under `content/` and `static/` is public. Do not put working documents, drafts or internal notes there.
 
 ## Figures
 

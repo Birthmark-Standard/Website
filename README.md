@@ -4,24 +4,29 @@ Source for https://birthmarkstandard.org.
 
 ## Layout
 
-- `website/`: the Hugo site.
-  - `content/`: the pages (`_index.html`, `how-it-works.html`, `foundation.html`, `research.html`) and `blog/`.
-  - `layouts/`: templates and partials, including the figure icon sprite (`partials/bm-sprite.html`).
-  - `static/`: files copied as they are. CSS (`styles.css`, `figures.css`, `technical-detail.css`), logos, images, `CNAME` and the blog admin (`admin/`).
-- `docs/`: the built site. Hugo writes it here and it is committed.
+A standard Hugo site at the repository root.
+
+- `content/`: the pages (`_index.html`, `how-it-works.html`, `research.html`, `foundation.html`).
+- `layouts/`: templates and partials, including the figure icon sprite (`partials/bm-sprite.html`).
+- `static/`: files copied as they are.
+  - `css/`: `styles.css`, `figures.css`, `technical-detail.css`.
+  - `images/`: logos and the founder photo.
+  - `org/`: the Governance Charter.
+  - `CNAME`, `favicon.ico`.
+- `archetypes/`: Hugo's template for new content.
+- `public/`: Hugo's output. It is not committed. The GitHub Actions workflow builds and deploys it on every push to `main`.
 
 ## Build
 
 Hugo 0.139.0 extended.
 
 ```
-cd website
 hugo --minify
 ```
 
-Edit `website/`. Do not edit `docs/` by hand.
+Output goes to `public/`. Run `hugo server` for a local preview.
 
-Everything in `docs/` and `website/static/` is public at birthmarkstandard.org. Do not put working documents there.
+Everything in `content/` and `static/` is public at birthmarkstandard.org. Do not put working documents there.
 
 ## Related repositories
 
