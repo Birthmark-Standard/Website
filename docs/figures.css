@@ -1,0 +1,44 @@
+/* Birthmark figures. Every class and variable is prefixed bm- so nothing collides with site CSS.
+   Dark mode follows the visitor's system setting. If the site has no dark theme, delete the @media block below,
+   otherwise the figures turn dark on a light page. */
+:root{
+  --bm-bg:#ffffff; --bm-surface:#ffffff; --bm-surface2:#e9edf3; --bm-fg:#18212c; --bm-muted:#556171; --bm-line:#cdd5df;
+  --bm-ph:#0d7a76; --bm-ph-soft:#d6eeec; --bm-ph-txt:#0a5f5c;
+  --bm-vf:#b45f06; --bm-vf-soft:#fbe6c8; --bm-vf-txt:#8a4704;
+  --bm-stop:#b3372f; --bm-stop-soft:#f7dad6; --bm-stop-txt:#97271f;
+  --bm-on-vf:#ffffff;
+  --bm-mono:ui-monospace,Menlo,Consolas,"DejaVu Sans Mono",monospace;
+}
+
+.bm-fig{margin:28px 0}
+.bm-plot{overflow-x:auto}
+.bm-plot svg{display:block;width:100%;min-width:600px;height:auto}
+.bm-fig figcaption{margin-top:12px;max-width:70ch;color:var(--bm-muted);font-size:.95em}
+.bm-fig svg text{fill:var(--bm-fg);font-family:inherit}
+.bm-fig svg .bm-tm{fill:var(--bm-muted)} .bm-fig svg .bm-tb{font-weight:600}
+.bm-fig svg .bm-t13{font-size:13px} .bm-fig svg .bm-t14{font-size:14px} .bm-fig svg .bm-t15{font-size:15px} .bm-fig svg .bm-t16{font-size:16px} .bm-fig svg .bm-t17{font-size:17px}
+.bm-fig svg .bm-lbl{font-size:11.5px;letter-spacing:.1em;font-weight:600;fill:var(--bm-muted)}
+.bm-fig svg .bm-tx-ph{fill:var(--bm-ph-txt)} .bm-fig svg .bm-tx-vf{fill:var(--bm-vf-txt)} .bm-fig svg .bm-tx-stop{fill:var(--bm-stop-txt)}
+.bm-f-surface{fill:var(--bm-surface)} .bm-f-surface2{fill:var(--bm-surface2)} .bm-f-fg{fill:var(--bm-fg)}
+.bm-f-ph-soft{fill:var(--bm-ph-soft)} .bm-f-vf-soft{fill:var(--bm-vf-soft)} .bm-f-stop-soft{fill:var(--bm-stop-soft)}
+.bm-f-ph{fill:var(--bm-ph)} .bm-f-vf{fill:var(--bm-vf)} .bm-f-stop{fill:var(--bm-stop)} .bm-f-muted{fill:var(--bm-muted)}
+.bm-fig svg .bm-s-line{stroke:var(--bm-line);stroke-width:1.5} .bm-fig svg .bm-s-ph{stroke:var(--bm-ph);stroke-width:1.8} .bm-fig svg .bm-s-vf{stroke:var(--bm-vf);stroke-width:1.8}
+.bm-fig svg .bm-s-stop{stroke:var(--bm-stop);stroke-width:1.8} .bm-fig svg .bm-s-muted{stroke:var(--bm-muted);stroke-width:1.8}
+.bm-fig svg .bm-dash{stroke-dasharray:6 5}
+.bm-fig svg .bm-arrow,.bm-fig svg .bm-chev{fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.bm-c-ph{color:var(--bm-ph)} .bm-c-vf{color:var(--bm-vf)} .bm-c-stop{color:var(--bm-stop)} .bm-c-muted{color:var(--bm-muted)} .bm-c-onvf{color:var(--bm-on-vf)}
+.bm-fig svg line.bm-s-ph,.bm-fig svg line.bm-s-vf,.bm-fig svg line.bm-s-stop,.bm-fig svg line.bm-s-muted,.bm-fig svg line.bm-s-line{fill:none}
+.bm-doors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:24px 0}
+.bm-door{display:flex;flex-direction:column;gap:10px;padding:18px;border-radius:14px;border:1px solid var(--bm-line);background:var(--bm-surface);color:var(--bm-fg);text-decoration:none;min-width:0}
+.bm-door:hover{border-color:var(--bm-fg)}
+.bm-door:focus-visible{outline:3px solid var(--bm-fg);outline-offset:3px}
+.bm-door-ic{width:54px;height:54px;border-radius:50%;display:grid;place-items:center}
+.bm-door-ic svg{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.bm-door-ph .bm-door-ic{background:var(--bm-ph-soft);color:var(--bm-ph-txt)}
+.bm-door-vf .bm-door-ic{background:var(--bm-vf-soft);color:var(--bm-vf-txt)}
+.bm-door-nd .bm-door-ic{background:var(--bm-surface2);color:var(--bm-fg)}
+.bm-door-title{font-size:1.2em;font-weight:700;line-height:1.2;margin:0}
+.bm-door-text{color:var(--bm-muted);font-size:.95em;margin:0}
+.bm-door-go{margin-top:auto;padding-top:6px;font-weight:600;font-size:.92em}
+.bm-door-ph .bm-door-go{color:var(--bm-ph-txt)} .bm-door-vf .bm-door-go{color:var(--bm-vf-txt)} .bm-door-nd .bm-door-go{color:var(--bm-fg)}
+@media (max-width:720px){.bm-doors{grid-template-columns:1fr}}

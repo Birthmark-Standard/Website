@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - The Birthmark Standard Foundation</title>
+    <link rel="icon" type="image/svg+xml" href="/Birthmark_logo_trimmed.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/styles.css">
+    
+    
+
+
+</head>
+<body>
+    
+        <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">
+                        <img src="/Birthmark_logo_transparent.svg" alt="Birthmark Standard Foundation Logo">
+                    </div>
+                    <h1><span class="the-prefix">The</span> <span class="org-name">Birthmark Standard Foundation</span></h1>
+                </div>
+                <nav>
+                    <a href="/">Home</a>
+                    <a href="/how-it-works.html">How It Works</a>
+                    <a href="/research.html">Research</a>
+                    <a href="/foundation.html">The Foundation</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+    
+
+<section class="hero" style="padding: 3rem 0;">
+    <div class="container">
+        <h1>Research</h1>
+        <p style="max-width: 800px; margin: 0 auto;">The Foundation publishes its protocol, its formal models and its specification openly. Anyone can read them, run the models and check the claims.</p>
+    </div>
+</section>
+
+<section class="technical-section" style="background: var(--light-gray);">
+    <div class="container">
+        <h2>Documents</h2>
+        <div class="content-block" style="max-width: 800px; margin: 0 auto;">
+            <ol class="doc-list">
+                <li>
+                    <h3>The Birthmark Protocol: Achieving Semantic Non-Assembly in Media Provenance</h3>
+                    <p>The privacy architecture, the per-component compromise analysis and the simulation.</p>
+                    <!-- TODO(Sam): paper status and link -->
+                </li>
+                <li>
+                    <h3>The Birthmark Protocol Integration</h3>
+                    <p>Devices, tokens, validators and the edit workflow.</p>
+                    <p class="doc-status">Preprint on arXiv (2602.04933). Not peer reviewed. <a href="https://arxiv.org/abs/2602.04933">arXiv &rarr;</a></p>
+                    <!-- TODO(Sam): confirm the replacement version is posted before launch -->
+                </li>
+                <li>
+                    <h3>ProVerif models</h3>
+                    <p>Eleven models, twelve security properties. Each model has a twin with one deliberate fault, so a passing result can be told from an empty one.</p>
+                    <p class="doc-status">Published in the repository. <a href="https://github.com/Birthmark-Standard/Protocol">Repository &rarr;</a></p>
+                    <!-- TODO(Sam): path to the models folder -->
+                </li>
+                <li>
+                    <h3>Per-leg message specification</h3>
+                    <p>Every message on every leg of the pipeline.</p>
+                    <p class="doc-status">Published in the repository. <a href="https://github.com/Birthmark-Standard/Protocol">Repository &rarr;</a></p>
+                    <!-- TODO(Sam): path to the spec -->
+                </li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<section class="technical-section">
+    <div class="container">
+        <div class="content-block" style="max-width: 800px; margin: 0 auto;">
+            <p>The models verify protocol logic, not a specific implementation. Code is licensed AGPL-3.0 for the blockchain component and Apache-2.0 for the tools. Technical specifications are published as prior art.</p>
+            <p class="doc-links" style="margin-top: 1.5rem; text-align: center;"><a href="https://github.com/Birthmark-Standard/Protocol">Repository</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@birthmarkstandard.org">Contact</a></p>
+        </div>
+    </div>
+</section>
+
+
+
+        <footer id="about">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>The Birthmark Standard Foundation</h3>
+                    <p>Building open-source photo authentication infrastructure as a public good. No tokens, no speculation—just infrastructure for truth.</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">Fiscally sponsored by Aspiration Tech</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <a href="/how-it-works.html">How It Works</a>
+                    <a href="/foundation.html">The Foundation</a>
+                    <a href="https://github.com/Birthmark-Standard/Protocol">GitHub Repository</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <a href="mailto:contact@birthmarkstandard.org">contact@birthmarkstandard.org</a>
+                    <a href="https://www.linkedin.com/company/birthmarkstandard/">LinkedIn</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025&ndash;2026 The Birthmark Standard Foundation. Dual license: AGPL-3.0 (blockchain) / Apache-2.0 (tools).</p>
+            </div>
+        </div>
+    </footer>
+
+
+        <style>
+         
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            z-index: 1000;
+            top: 100%;
+            left: 0;
+            margin-top: 0;
+            padding-top: 0.25rem;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            text-decoration: none;
+            color: #333;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: var(--light-blue);
+            color: #333;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+         
+        .dropdown-menu a.external-link {
+            color: var(--accent-blue);
+        }
+
+        .dropdown-menu a.external-link:hover {
+            color: var(--accent-blue);
+            background-color: var(--light-blue);
+        }
+
+         
+        @media (max-width: 768px) {
+            .dropdown-toggle {
+                pointer-events: auto;
+            }
+
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                margin-top: 0.5rem;
+                padding-top: 0;
+                background-color: rgba(255, 255, 255, 0.95);
+            }
+
+             
+            .dropdown.active .dropdown-menu {
+                display: block;
+            }
+
+            .dropdown:hover .dropdown-menu {
+                display: none;
+            }
+        }
+    </style>
+
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.innerWidth <= 768) {
+                const dropdowns = document.querySelectorAll('.dropdown');
+
+                dropdowns.forEach(dropdown => {
+                    const toggle = dropdown.querySelector('.dropdown-toggle');
+
+                    toggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+
+                        
+                        dropdowns.forEach(other => {
+                            if (other !== dropdown) {
+                                other.classList.remove('active');
+                            }
+                        });
+
+                        
+                        dropdown.classList.toggle('active');
+                    });
+                });
+
+                
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.dropdown')) {
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+
+
+    
+
+
+<style>
+.doc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.doc-list li {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+.doc-list h3 {
+    margin: 0 0 0.5rem 0;
+}
+.doc-list p {
+    margin: 0;
+}
+.doc-status {
+    margin-top: 0.75rem !important;
+    color: var(--gray-text);
+    font-size: 0.95rem;
+}
+.doc-list a, .doc-links a {
+    color: var(--accent-blue);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+</style>
+
+
+</body>
+</html>
